@@ -27,7 +27,7 @@
 #define CONT_ID 1
 #define EXIT_ID 2
 
-enum class buttonVal
+enum buttonVal
 {
 	PLAY,
 	CONTINUE,
@@ -63,11 +63,11 @@ public:
 
 	AllegroLayout * getLayout() { return &this->layout; }
 
-	buttonVal checkForPress(float mouseX, float mouseY, double timeStamp);
+	int checkForPress(float mouseX, float mouseY, double timeStamp);
 
 private:
 
 	BoxArray boxes;
 	AllegroFont font;
 	AllegroLayout layout;
-}
+};
