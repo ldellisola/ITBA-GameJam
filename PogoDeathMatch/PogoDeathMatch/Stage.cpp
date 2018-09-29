@@ -39,7 +39,7 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		// movimiento del jugador
 		break;
 	case EventType::KeyUp:
-		if(ev.getValue == ALLEGRO_KEY_)
+		//if(ev.getValue == ALLEGRO_KEY_)
 		break;
 	case EventType::Timer:
 
@@ -49,11 +49,13 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->zombies[i]->update();
 		}
 
-		//this->draw();
+		this->draw();
 		//this->player->draw();
+		//window.update();
 		for (int i = 0; i < this->zombies.size(); i++)
 			this->zombies[i]->draw();
-		window.update();
+		al_flip_display();
+		
 		break;
 	default:
 		break;

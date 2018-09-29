@@ -26,4 +26,4 @@ private:
 	unsigned angle;
 };
 
->>>>>>> 1dc29fbb9336ecba34debc42c61879ff7b53a315
+

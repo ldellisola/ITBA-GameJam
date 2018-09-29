@@ -23,15 +23,16 @@ BaseCharacter::~BaseCharacter()
 
 void BaseCharacter::draw()
 {
-	unsigned int tt = (this->maxTick / 2)- this->tick;
+	int tt = (this->maxTick / 2)- this->tick;
 
-	this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2));
-	this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2));
+	this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2.0));
+	this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
 	this->sprite->setDimensions(this->height, this->width);
 	this->sprite->setAngle(this->angle);
 
 	this->sprite->draw(this->x, this->y);
+	al_flip_display();
 
 
 }
