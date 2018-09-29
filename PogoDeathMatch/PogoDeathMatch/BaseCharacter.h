@@ -8,7 +8,7 @@
 class BaseCharacter
 {
 public:
-	BaseCharacter(AllegroSound * jump,AllegroSound * hit,AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float height, float width, float damp, float sizeCoef);
+	BaseCharacter(AllegroSound * jump,AllegroSound * hit,AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float radius, float damp, float sizeCoef);
 	~BaseCharacter();
 
 	void draw();
@@ -20,9 +20,9 @@ public:
 	float getY() { return y; }
 
 protected:
-	float x, y, height, width;
+	float x, y, radius;
 	float angle,speed;
-	const float force, mass, baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
+	const float force, mass, baseSpeed, baseRadius, dampCoef, sizeCoef;
 	void updateTick();
 private:
 	bool hit(BaseCharacter * other);
