@@ -24,11 +24,11 @@ int main(void) {
 	window.setImageAsBackground();
 
 	AllegroSoundFactory soundF;
-	AllegroSound * zombieJump = soundF.create("bounce.ogg", PlayMode::Once, 0);
+	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
-	Player player(nullptr, nullptr, &playerSprite, 200, 200);
-	Zombie zombie(zombieJump, nullptr, &zombieSprite, 500, 500);
+	Player player(playerjump, nullptr, &playerSprite, 200, 200);
+	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
 
 	stage.addZombie(&zombie);
 	stage.addPlayer(&player);
