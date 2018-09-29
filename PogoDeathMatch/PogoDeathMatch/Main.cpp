@@ -23,6 +23,8 @@ int main(void) {
 	AllegroSprite stageSprite("StageSprite.png",2000,2000);
 	window.setImageAsBackground();
 
+	AllegroSoundFactory soundF;
+	AllegroSound * zombieJump = soundF.create("", PlayMode::Once, 0);
 
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
 	Player player(nullptr, nullptr, &playerSprite, 200, 200);
@@ -40,8 +42,6 @@ int main(void) {
 
 	//Menu mainMenu;
 	//window.insertLayout(mainMenu.getLayout());
-
-
 
 	/*AllegroEvent alEv(EventType::Empty, 0);*/
 
