@@ -3,7 +3,7 @@
 
 #define Force (1)
 #define Mass (1)
-#define Speed (0.5)
+#define Speed (20)
 #define Radius (25)
 #define Damp (1)
 #define SizeCoef (7)
@@ -24,16 +24,11 @@ void Player::update()
 {
 
 	this->updateTick();
-
-	switch (rotation)
-	{
-	case Rotation::Left:
+	if (left)
 		this->rotateLeft();
-		break;
-	case Rotation::Right:
+	if (right)
 		this->rotateRight();
-		break;
-	}
+
 	if (moving)
 		BaseCharacter::update();
 
@@ -55,18 +50,22 @@ void Player::setAngle(float x_, float y_)
 	this->angle = atan2f(y_ - y, x_ - x);
 }
 
-void Player::setRotation(Rotation rot)
+void Player::setRotation(Rotation rot, bool on)
 {
-	this->rotation = rot;
+	if (rot == Rotation::Left)
+		this->left = on;
+	else
+		this->right = on;
+	
 }
 
 void Player::rotateLeft()
 {
-	float a = 0.3 *(float)PI / 180.0;
+	float a = 15 *(float)PI / 180.0;
 	this->angle =  this->angle -a;
 }
 
 void Player::rotateRight()
 {
-	this->angle += 0.3*PI / 180.0;
+	this->angle += 15*PI / 180.0;
 }

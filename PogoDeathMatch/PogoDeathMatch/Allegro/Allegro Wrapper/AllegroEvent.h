@@ -45,6 +45,8 @@ public:
 
 	AllegroEvent ObtainEvent();
 
+	AllegroEvent * evnt = nullptr;
+
 
 private:
 	AllegroEventFactory * eventF = nullptr;

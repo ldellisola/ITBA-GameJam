@@ -44,10 +44,10 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->player->setMoving(true);
 			break;
 		case ALLEGRO_KEY_A:
-			this->player->setRotation(Rotation::Left);
+			this->player->setRotation(Rotation::Left,true);
 			break;
 		case ALLEGRO_KEY_D:
-			this->player->setRotation(Rotation::Right);
+			this->player->setRotation(Rotation::Right,true);
 			break;
 		}
 		break;
@@ -59,10 +59,10 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->player->setMoving(false);
 			break;
 		case ALLEGRO_KEY_A:
-			this->player->setRotation(Rotation::None);
+			this->player->setRotation(Rotation::Left,false);
 			break;
 		case ALLEGRO_KEY_D:
-			this->player->setRotation(Rotation::None);
+			this->player->setRotation(Rotation::Right,false);
 			break;
 			
 		}
