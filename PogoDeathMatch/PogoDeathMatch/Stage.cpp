@@ -36,14 +36,18 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 	switch (ev.getType())
 	{
 	case EventType::KeyDown:
-		// movimiento del jugador
+		if (ev.getValue == ALLEGRO_KEY_W) {
+			this->player->setMoving(true);
+		}
 		break;
 	case EventType::KeyUp:
-		if(ev.getValue == ALLEGRO_KEY_)
+		if (ev.getValue == ALLEGRO_KEY_W) {
+			this->player->setMoving(false);
+		}
 		break;
 	case EventType::Timer:
-
-		//this->player->update();
+		
+		this->player->update(ev.getX, ev.getY);
 		for (int i = 0; i < this->zombies.size(); i++) {
 			this->zombies[i]->calculateMovement(nullptr);
 			this->zombies[i]->update();

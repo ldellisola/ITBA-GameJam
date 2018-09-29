@@ -33,7 +33,6 @@ void BaseCharacter::draw()
 
 	this->sprite->draw(this->x, this->y);
 
-
 }
 
 void BaseCharacter::playJumpSound()

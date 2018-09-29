@@ -13,8 +13,10 @@ Player::~Player()
 {
 }
 
-void Player::update()
+void Player::update(float x_, float y_)
 {
+	setAngle(x_, y_);
+
 	if (moving) {
 		BaseCharacter::update();
 	}
@@ -29,4 +31,3 @@ void Player::setAngle(float x_, float y_)
 {
 	this->angle = atan2f(y_ - y, x_ - x);
 }
->>>>>>> 1dc29fbb9336ecba34debc42c61879ff7b53a315
