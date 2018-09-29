@@ -35,27 +35,51 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 {
 	switch (ev.getType())
 	{
+	case EventType::DisplayClose:
+		return true;
 	case EventType::KeyDown:
-		if (ev.getValue() == ALLEGRO_KEY_W) {
+		switch (ev.getValue())
+		{
+		case ALLEGRO_KEY_W:
 			this->player->setMoving(true);
+			break;
+		case ALLEGRO_KEY_A:
+			this->player->setRotation(Rotation::Left);
+			break;
+		case ALLEGRO_KEY_D:
+			this->player->setRotation(Rotation::Right);
+			break;
 		}
 		break;
 	case EventType::KeyUp:
-		if (ev.getValue() == ALLEGRO_KEY_W) {
+
+		switch (ev.getValue())
+		{
+		case ALLEGRO_KEY_W:
 			this->player->setMoving(false);
+			break;
+		case ALLEGRO_KEY_A:
+			this->player->setRotation(Rotation::None);
+			break;
+		case ALLEGRO_KEY_D:
+			this->player->setRotation(Rotation::None);
+			break;
+			
 		}
 		break;
+
 	case EventType::Timer:
 
-		this->player->update(ev.getX(), ev.getY());
+		this->player->update();
+
 		for (int i = 0; i < this->zombies.size(); i++) {
-			this->zombies[i]->calculateMovement(nullptr);
+
+			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
 
 		this->draw();
-		//this->player->draw();
-		//window.update();
+		this->player->draw();
 		for (int i = 0; i < this->zombies.size(); i++)
 			this->zombies[i]->draw();
 		al_flip_display();

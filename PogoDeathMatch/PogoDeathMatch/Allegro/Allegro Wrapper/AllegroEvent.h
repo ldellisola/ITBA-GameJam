@@ -6,7 +6,7 @@
 
 enum class EventType
 {
-	KeyDown,KeyUp, MouseDown, MouseUp,DisplayClose,Timer, Empty
+	KeyDown,KeyUp, MouseDown, MouseUp,MouseMoved,DisplayClose,Timer, Empty
 };
 
 class AllegroEvent

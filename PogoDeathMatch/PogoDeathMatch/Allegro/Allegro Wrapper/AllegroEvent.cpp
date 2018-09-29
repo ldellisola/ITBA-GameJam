@@ -54,9 +54,12 @@ void AllegroEventHandler::getEvent()
 		temp.setCoordinates(eventF->getMouseEvent().x, eventF->getMouseEvent().y);
 		temp.setTimestamp(eventF->getMouseEvent().timestamp);
 		break;
+	case ALLEGRO_EVENT_MOUSE_AXES:
+		temp.setType(EventType::MouseMoved);
+		temp.setCoordinates(eventF->getMouseEvent().x, eventF->getMouseEvent().y);
+		break;
 	case ALLEGRO_EVENT_TIMER:
 		temp.setType(EventType::Timer);
-		temp.setCoordinates(eventF->getMouseEvent().x, eventF->getMouseEvent().y);
 		break;
 	}
 
