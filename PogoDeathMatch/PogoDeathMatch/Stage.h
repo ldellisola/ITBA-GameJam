@@ -2,6 +2,7 @@
 
 #include "BaseCharacter.h"
 #include "Zombie.h"
+#include "Player.h"
 #include "Allegro\Allegro Wrapper\AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroSound.h"
 #include "Allegro/Allegro Wrapper/AllegroEvent.h"
@@ -24,7 +25,7 @@ private:
 	unsigned radius;
 	unsigned centerX;
 	unsigned centerY;
-	BaseCharacter* player;
+	Player* player;
 	std::vector<Zombie*> zombies;
 
 };

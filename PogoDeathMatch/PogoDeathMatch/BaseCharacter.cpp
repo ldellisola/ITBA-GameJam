@@ -34,7 +34,6 @@ void BaseCharacter::draw()
 	this->sprite->draw(this->x, this->y);
 	al_flip_display();
 
-
 }
 
 void BaseCharacter::playJumpSound()

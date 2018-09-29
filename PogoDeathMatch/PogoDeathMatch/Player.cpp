@@ -13,8 +13,10 @@ Player::~Player()
 {
 }
 
-void Player::update()
+void Player::update(float x_, float y_)
 {
+	setAngle(x_, y_);
+
 	if (moving) {
 		BaseCharacter::update();
 	}

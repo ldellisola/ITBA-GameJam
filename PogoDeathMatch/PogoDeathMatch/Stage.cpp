@@ -16,7 +16,7 @@ Stage::~Stage()
 }
 
 
-void Stage::draw() 
+void Stage::draw()
 {
 	this->stageSprite->draw(0, 0);
 }
@@ -36,14 +36,18 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 	switch (ev.getType())
 	{
 	case EventType::KeyDown:
-		// movimiento del jugador
+		if (ev.getValue == ALLEGRO_KEY_W) {
+			this->player->setMoving(true);
+		}
 		break;
 	case EventType::KeyUp:
-		//if(ev.getValue == ALLEGRO_KEY_)
+		if (ev.getValue == ALLEGRO_KEY_W) {
+			this->player->setMoving(false);
+		}
 		break;
 	case EventType::Timer:
 
-		//this->player->update();
+		this->player->update(ev.getX, ev.getY);
 		for (int i = 0; i < this->zombies.size(); i++) {
 			this->zombies[i]->calculateMovement(nullptr);
 			this->zombies[i]->update();
@@ -55,7 +59,7 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		for (int i = 0; i < this->zombies.size(); i++)
 			this->zombies[i]->draw();
 		al_flip_display();
-		
+
 		break;
 	default:
 		break;
@@ -63,4 +67,3 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 
 	return false;
 }
-
