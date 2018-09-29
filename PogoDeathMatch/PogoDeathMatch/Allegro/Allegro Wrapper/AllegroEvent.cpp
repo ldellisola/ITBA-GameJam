@@ -22,13 +22,11 @@ bool AllegroEventHandler::isThereEvent()
 
 void AllegroEventHandler::getEvent()
 {
-	
+	this->eventF->getEvent();
 
 	AllegroEvent temp(EventType::Empty, 0 );
 
-	if (this->eventF->getEvent())
-		switch (this->eventF->getEventType()) {
-			
+	switch (this->eventF->getEventType()) {
 	case ALLEGRO_EVENT_DISPLAY_CLOSE:
 		temp.setType(EventType::DisplayClose);
 		break;

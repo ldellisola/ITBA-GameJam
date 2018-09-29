@@ -4,14 +4,13 @@
 #define Force (1)
 #define Mass (1)
 #define Speed (0.5)
-#define Height (50)
-#define Width (50)
+#define Radius (25)
 #define Damp (1)
-#define SizeCoef (15)
+#define SizeCoef (7)
 
 
 Player::Player(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y)
-	: BaseCharacter(jump, hit, sprite, x, y, Force, Mass, Speed, Height, Width, Damp, SizeCoef)
+	: BaseCharacter(jump, hit, sprite, x, y, Force, Mass, Speed, Radius, Damp, SizeCoef)
 {
 	this->x = x;
 	this->y = y;

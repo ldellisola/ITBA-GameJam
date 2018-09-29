@@ -178,9 +178,6 @@
     <Image Include="PogoDeathmatch1.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="examplebutton1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="UbuntuMono-R.ttf">
@@ -189,5 +186,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="GameMusic.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="MenuMusic.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="angrykitten.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="bounce.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="evillaugh.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

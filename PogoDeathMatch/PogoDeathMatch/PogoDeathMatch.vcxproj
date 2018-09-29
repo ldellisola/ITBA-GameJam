@@ -211,7 +211,6 @@
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="examplebutton1.png" />
     <Image Include="PlayerSprite.png" />
     <Image Include="PogoDeathmatch1.png" />
     <Image Include="StageSprite.png" />
@@ -222,6 +221,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="angrykitten.wav" />
+    <Media Include="bounce.wav" />
+    <Media Include="evillaugh.wav" />
+    <Media Include="GameMusic.mp3" />
+    <Media Include="MenuMusic.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

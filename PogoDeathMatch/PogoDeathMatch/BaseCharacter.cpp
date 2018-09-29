@@ -5,8 +5,8 @@
 
 
 
-BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float height, float width, float damp, float sizeCoef)
-	: baseHeight(height), baseSpeed(speed), BaseWidth(width), dampCoef(damp), force(force), mass(mass), sizeCoef(sizeCoef)
+BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float radius, float damp, float sizeCoef)
+	: baseSpeed(speed), baseRadius(radius), dampCoef(damp), force(force), mass(mass), sizeCoef(sizeCoef)
 {
 	this->jumpSound = jump;
 	this->hitSound = hit;
@@ -22,12 +22,14 @@ BaseCharacter::~BaseCharacter()
 
 void BaseCharacter::draw()
 {
+
 	int tt = (this->maxTick / 2)- this->tick;
+	this->radius = this->baseRadius + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
-	this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2.0));
-	this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2.0));
+	//this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2.0));
+	//this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
-	this->sprite->setDimensions(this->height, this->width);
+	this->sprite->setDimensions(2*this->radius, 2*this->radius);
 	this->sprite->setAngle(this->angle *180/PI);
 
 	this->sprite->draw(this->x, this->y);
@@ -61,12 +63,13 @@ void BaseCharacter::update()
 
 bool BaseCharacter::hit(BaseCharacter * other)
 {
-	if (this->x <= (other->x + other->BaseWidth) && (this->x + this->width) >= other->x)
+	/*if (this->x <= (other->x + other->BaseWidth) && (this->x + this->width) >= other->x)
 		if ((this->y + this->height >= other->y) && (this->y) <= (other->y + other->baseHeight))
 			if ( (sqrtf(powf(this->angle - other->angle, 2)) >=0)  &&  (sqrtf(powf(this->angle - other->angle, 2))<=PI/2.0)) {
 				other->applyForce(this->force);
 				return true;
 			}
+	return false;*/
 	return false;
 }
 
@@ -87,6 +90,8 @@ void BaseCharacter::DamperForce()
 
 void BaseCharacter::updateTick()
 {
+	if (this->tick == 0 && this->jumpSound != nullptr)
+		this->playJumpSound();
 	this->tick = (++tick) % maxTick;
 }
 
