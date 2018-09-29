@@ -128,11 +128,6 @@ void AllegroLayout::loadImageBackground(AllegroBox & image)
 	this->image = image.getBitmap();
 }
 
-void AllegroLayout::drawScaled(float width, float height)
-{
-
-}
-
 void AllegroLayout::setUp()
 {
 	if (layout != nullptr) {
