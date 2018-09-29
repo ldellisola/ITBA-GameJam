@@ -35,32 +35,22 @@ void Zombie::update()
 
 void Zombie::calculateMovement(BaseCharacter * player)
 {
-	// DEBUG
-	//if (directions.size() == 0) {
-	//	float tempAngle = atan2f(0 - this->y, 0 - this->x);
-
-
-	//	for (int i = 0; i < 5; i++) {
-	//		this->directions.push(variateAngle(tempAngle));
-	//	}
-	//}
-
 	if (directions.size() == 0) {
-		float tempAngle = atan2f(player->getY() - this->y, player->getX() - this->x);
-
-
-		for (int i = 0; i < 5; i++) {
-			this->directions.push(variateAngle(tempAngle));
+		for (int j = 0; j < 3; j++) {
+			float tempAngle = atan2f(player->getY() - this->y, player->getX() - this->x);
+			tempAngle = variateAngle(tempAngle);
+			for (int i = 0; i < 400; i++) {
+				this->directions.push(tempAngle);
+			}
 		}
 	}
-
 }
 
 
 float variateAngle(float angle) {
 
-	int var = (rand() % 200) - 100;
+	int var = (rand() % 100) - 50;
 
-	return angle + var / 100.0;
+	return angle + (var / 180.0) * PI;
 
 }
