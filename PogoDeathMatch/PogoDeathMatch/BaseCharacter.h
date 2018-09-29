@@ -18,6 +18,7 @@ public:
 
 	float getX() { return x; }
 	float getY() { return y; }
+	bool hit(BaseCharacter * other);
 
 protected:
 	float x, y, height, width;
@@ -25,7 +26,7 @@ protected:
 	const float force, mass, baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
 	void updateTick();
 private:
-	bool hit(BaseCharacter * other);
+	
 	void applyForce(float force);
 
 	void DamperForce();

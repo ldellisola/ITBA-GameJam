@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <math.h>
 
-#define Force (1)
+#define Force (10)
 #define Mass (1)
 #define Speed (0.5)
 #define Height (50)
