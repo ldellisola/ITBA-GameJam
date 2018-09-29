@@ -19,10 +19,7 @@ int main(void) {
 	AllegroSprite zombieSprite("zombieSprite.png");
 	AllegroSprite playerSprite("PlayerSprite.png");
 	AllegroSprite stageSprite("StageSprite.png",2000,2000);
-	//AllegroBox background(0, 0, 2000, 2000);
-	//window.loadImageBackground(al_load_bitmap("StageSprite.png"));
 	window.setImageAsBackground();
-	//window.update();
 	
 
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);

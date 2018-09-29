@@ -21,7 +21,7 @@ void Stage::draw()
 	this->stageSprite->draw(0, 0);
 }
 
-void Stage::addPlayer(BaseCharacter * player_)
+void Stage::addPlayer(Player * player_)
 {
 	this->player = player_;
 }
@@ -36,12 +36,12 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 	switch (ev.getType())
 	{
 	case EventType::KeyDown:
-		if (ev.getValue == ALLEGRO_KEY_W) {
+		if (ev.getValue() == ALLEGRO_KEY_W) {
 			this->player->setMoving(true);
 		}
 		break;
 	case EventType::KeyUp:
-		if (ev.getValue == ALLEGRO_KEY_W) {
+		if (ev.getValue() == ALLEGRO_KEY_W) {
 			this->player->setMoving(false);
 		}
 		break;

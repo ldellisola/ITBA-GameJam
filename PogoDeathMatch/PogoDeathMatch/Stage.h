@@ -15,7 +15,7 @@ public:
 	Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, unsigned centerY_);
 	~Stage();
 	void draw();
-	void addPlayer(BaseCharacter* player_);
+	void addPlayer(Player* player_);
 	void addZombie(Zombie* zombie_);
 
 	bool run(AllegroEvent ev, AllegroWindow& window);
