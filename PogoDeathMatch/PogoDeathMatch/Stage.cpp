@@ -35,6 +35,8 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 {
 	switch (ev.getType())
 	{
+	case EventType::DisplayClose:
+		return true;
 	case EventType::KeyDown:
 		if (ev.getValue() == ALLEGRO_KEY_W) {
 			this->player->setMoving(true);
@@ -45,16 +47,23 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->player->setMoving(false);
 		}
 		break;
+
 	case EventType::Timer:
 
-		this->player->update(ev.getX(), ev.getY());
+		int x, y;
+		if (al_get_mouse_cursor_position(&x, &y)) {
+			this->player->setAngle(x, y);
+		}
+
+		this->player->update();
+
 		for (int i = 0; i < this->zombies.size(); i++) {
 			this->zombies[i]->calculateMovement(nullptr);
 			this->zombies[i]->update();
 		}
 
 		this->draw();
-		//this->player->draw();
+		this->player->draw();
 		//window.update();
 		for (int i = 0; i < this->zombies.size(); i++)
 			this->zombies[i]->draw();

@@ -3,11 +3,11 @@
 
 #define force (1)
 #define mass (1)
-#define speed (1)
-#define height (1)
-#define width (1)
+#define speed (50)
+#define height (50)
+#define width (50)
 #define damp (1)
-#define sizeCoef (1)
+#define sizeCoef (10)
 
 
 Player::Player(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y)
@@ -21,13 +21,13 @@ Player::~Player()
 {
 }
 
-void Player::update(float x_, float y_)
+void Player::update()
 {
-	setAngle(x_, y_);
-
-	if (moving) {
-		BaseCharacter::update();
-	}
+	
+	BaseCharacter::update();
+	//if (moving) {
+	//	
+	//}
 }
 
 void Player::setMoving(bool moving_)

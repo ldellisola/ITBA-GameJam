@@ -32,7 +32,7 @@ private:
 
 
 	const float force, mass,baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
-	const unsigned int maxTick = 20;
+	const unsigned int maxTick = 100;
 	float appliedForce = 0, speed;
 
 	unsigned int tick =0;

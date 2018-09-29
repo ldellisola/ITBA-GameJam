@@ -14,7 +14,6 @@ BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSpr
 
 	this->x = x;
 	this->y = y;
-	this->angle = 0;
 }
 
 BaseCharacter::~BaseCharacter()
@@ -32,7 +31,6 @@ void BaseCharacter::draw()
 	this->sprite->setAngle(this->angle);
 
 	this->sprite->draw(this->x, this->y);
-	al_flip_display();
 
 }
 
@@ -59,6 +57,11 @@ void BaseCharacter::update()
 	}
 	this->updateTick();
 	this->DamperForce();
+}
+
+void BaseCharacter::setDirection(Direction dir)
+{
+	this->dir= dir;
 }
 
 bool BaseCharacter::hit(BaseCharacter * other)
