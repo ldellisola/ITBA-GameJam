@@ -4,7 +4,7 @@
 
 enum class Rotation
 {
-	Left, Right, None
+	Left, Right
 };
 
 class Player :
@@ -17,10 +17,11 @@ public:
 	void update();
 	void setMoving(bool moving_);
 	void setAngle(float x_, float y_);
-	void setRotation(Rotation rot);
+	void setRotation(Rotation rot,bool on);
 	void rotateLeft();
 	void rotateRight();
 private:
 	bool moving;
-	Rotation rotation = Rotation::None;
+	bool left = false;
+	bool right = false;
 };
