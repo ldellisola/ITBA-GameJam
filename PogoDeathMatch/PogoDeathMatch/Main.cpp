@@ -15,19 +15,19 @@ int main(void) {
 	window.setPosition(0, 0);
 	AllegroEventHandler eventHandler(allegro.getEventQueue());
 
-/*
+
 	AllegroSprite zombieSprite("zombieSprite.png");
 	AllegroSprite playerSprite("PlayerSprite.png");
 	AllegroSprite stageSprite("StageSprite.png", 2000, 2000);
 	window.setImageAsBackground();
-*/
-/*
+
+
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
 	Player player(nullptr, nullptr, &playerSprite, 200, 200);
 	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
 
 	stage.addZombie(&zombie);
-	stage.addPlayer(&player);*/
+	stage.addPlayer(&player);
 
 	// UI
 
@@ -35,27 +35,27 @@ int main(void) {
 
 	//
 
-	Menu mainMenu;
-	window.insertLayout(mainMenu.getLayout());
+	//Menu mainMenu;
+	//window.insertLayout(mainMenu.getLayout());
 
 	bool leave = false;
 
 
-	AllegroEvent alEv(EventType::Empty, 0);
+	/*AllegroEvent alEv(EventType::Empty, 0);*/
 
 	do {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
-			/*		leave = stage.run(eventHandler.ObtainEvent(), window);*/
+			leave = stage.run(eventHandler.ObtainEvent(), window);
 
-			alEv = eventHandler.ObtainEvent();
-			window.update();
+			//alEv = eventHandler.ObtainEvent();
+			//window.update();
 
 
-			if (alEv.getType() == EventType::MouseDown) {
-				if (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp()) == EXIT)
-					leave = true;
-			}
+			//if (alEv.getType() == EventType::MouseDown) {
+			//	if (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp()) == EXIT)
+			//		leave = true;
+			//}
 		}
 
 	} while (!leave);
