@@ -130,7 +130,9 @@ private:
 class AllegroEventFactory
 {
 public:
-	AllegroEventFactory(ALLEGRO_EVENT_QUEUE* eventQueue) { this->eventQueue = eventQueue; }
+	AllegroEventFactory(ALLEGRO_EVENT_QUEUE* eventQueue) {
+		this->eventQueue = eventQueue; 
+	}
 
 	~AllegroEventFactory() { for (ALLEGRO_EVENT_SOURCE* eventSource : sources) al_unregister_event_source(eventQueue, eventSource); }
 	void flushQueue() { al_flush_event_queue(this->eventQueue); }
@@ -146,6 +148,8 @@ public:
 		al_register_event_source(eventQueue, eventSource);
 		sources.push_back(eventSource);
 	}
+
+
 	void unregisterEventSource(ALLEGRO_EVENT_SOURCE* eventSource) {
 		int i;
 		bool kill = false;
