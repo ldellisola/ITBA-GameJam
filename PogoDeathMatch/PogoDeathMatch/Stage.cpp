@@ -69,7 +69,7 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		this->player->update();
 
 		for (int i = 0; i < this->zombies.size(); i++) {
-			this->zombies[i]->calculateMovement(nullptr);
+			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
 
