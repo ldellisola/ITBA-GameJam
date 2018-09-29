@@ -23,17 +23,14 @@ protected:
 	float x, y, height, width;
 	float angle,speed;
 	const float force, mass, baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
+	void updateTick();
 private:
 	bool hit(BaseCharacter * other);
 	void applyForce(float force);
 
 	void DamperForce();
-
-	void updateTick();
-
-
 	
-	const unsigned int maxTick = 100;
+	const unsigned int maxTick = 300;
 	float appliedForce = 0;
 
 	unsigned int tick =0;

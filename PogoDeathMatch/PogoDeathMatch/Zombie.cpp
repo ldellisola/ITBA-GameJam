@@ -8,7 +8,7 @@ float variateAngle(float angle);
 #define Height  (50)
 #define Width (50)
 #define Damp (1)
-#define SizeCoef (5)
+#define SizeCoef (15)
 
 
 Zombie::Zombie(AllegroSound *jump,AllegroSound * hit,AllegroSprite * sprite,float x, float y)
@@ -27,6 +27,8 @@ Zombie::~Zombie()
 void Zombie::update()
 {
 	this->angle = directions.front();
+
+	this->updateTick();
 
 	BaseCharacter::update();
 
@@ -48,9 +50,6 @@ void Zombie::calculateMovement(BaseCharacter * player)
 
 
 float variateAngle(float angle) {
-
 	int var = (rand() % 100) - 50;
-
 	return angle + (var / 180.0) * PI;
-
 }

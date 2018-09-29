@@ -7,7 +7,7 @@
 #define Height (50)
 #define Width (50)
 #define Damp (1)
-#define SizeCoef (10)
+#define SizeCoef (15)
 
 
 Player::Player(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y)
@@ -23,7 +23,8 @@ Player::~Player()
 
 void Player::update()
 {
-	if (moving)
+	this->updateTick();
+	if(moving)
 		BaseCharacter::update();
 
 }
