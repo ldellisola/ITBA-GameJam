@@ -3,10 +3,6 @@
 #include "Allegro/Allegro Wrapper/AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroSound.h"
 
-enum class Direction
-{
-	forward, backwards
-};
 
 class BaseCharacter
 {
@@ -39,7 +35,7 @@ private:
 	const unsigned int maxTick = 20;
 	float appliedForce = 0, speed;
 
-	unsigned int tick;
+	unsigned int tick =0;
 
 	AllegroSprite * sprite = nullptr;
 	AllegroSound * jumpSound = nullptr;

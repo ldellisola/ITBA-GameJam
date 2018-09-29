@@ -8,7 +8,7 @@ class Zombie :
 	public BaseCharacter
 {
 public:
-	Zombie();
+	Zombie(AllegroSound *jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y);
 	~Zombie(); 
 	void update();
 	void calculateMovement(BaseCharacter * player);

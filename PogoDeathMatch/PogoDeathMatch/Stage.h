@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BaseCharacter.h"
+#include "Zombie.h"
 #include "Allegro\Allegro Wrapper\AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroSound.h"
 #include "Allegro/Allegro Wrapper/AllegroEvent.h"
@@ -14,7 +15,7 @@ public:
 	~Stage();
 	void draw();
 	void addPlayer(BaseCharacter* player_);
-	void addZombie(BaseCharacter* zombie_);
+	void addZombie(Zombie* zombie_);
 
 	bool run(AllegroEvent ev, AllegroWindow& window);
 
@@ -24,7 +25,7 @@ private:
 	unsigned centerX;
 	unsigned centerY;
 	BaseCharacter* player;
-	std::vector<BaseCharacter*> zombies;
+	std::vector<Zombie*> zombies;
 
 };
 

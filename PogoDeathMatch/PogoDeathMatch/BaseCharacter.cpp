@@ -23,7 +23,7 @@ BaseCharacter::~BaseCharacter()
 
 void BaseCharacter::draw()
 {
-	unsigned int tt = this->tick - this->maxTick / 2;
+	unsigned int tt = (this->maxTick / 2)- this->tick;
 
 	this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2));
 	this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2));

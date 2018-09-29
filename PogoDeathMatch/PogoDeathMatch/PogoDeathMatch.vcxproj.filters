@@ -162,4 +162,15 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="PlayerSprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="StageSprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="zombieSprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
