@@ -31,7 +31,6 @@ void BaseCharacter::draw()
 	this->sprite->setAngle(this->angle *180/PI);
 
 	this->sprite->draw(this->x, this->y);
-
 }
 
 void BaseCharacter::playJumpSound()
@@ -55,7 +54,6 @@ void BaseCharacter::update()
 		this->x += cosf(this->angle) * (baseSpeed + appliedForce);
 		this->y += sinf(this->angle) * (baseSpeed + appliedForce);
 	}
-	this->updateTick();
 	this->DamperForce();
 }
 

@@ -70,8 +70,6 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 
 	case EventType::Timer:
 
-
-
 		this->player->update();
 
 		for (int i = 0; i < this->zombies.size(); i++) {
