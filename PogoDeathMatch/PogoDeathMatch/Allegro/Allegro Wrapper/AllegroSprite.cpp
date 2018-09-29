@@ -58,7 +58,6 @@ AllegroSprite::~AllegroSprite()
 
 void AllegroSprite::draw(float x, float y)
 {
-	//al_draw_bitmap(this->bitmap, x, y, 0);
 	al_draw_scaled_rotated_bitmap(this->bitmap, this->width / 2.0, this->height / 2.0,x, y,this->scaledWidth/ float(this->width),this->scaledHeight/ float(this->height), this->angle,0);
 }
 

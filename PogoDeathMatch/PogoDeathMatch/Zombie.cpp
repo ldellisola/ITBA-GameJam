@@ -4,7 +4,7 @@ float variateAngle(float angle);
 
 #define Force (1)
 #define Mass (1)
-#define Speed (5)
+#define Speed (0.01)
 #define Height  (50)
 #define Width (50)
 #define Damp (1)
@@ -36,23 +36,23 @@ void Zombie::update()
 void Zombie::calculateMovement(BaseCharacter * player)
 {
 	// DEBUG
-	if (directions.size() == 0) {
-		float tempAngle = atan2f(0 - this->y, 0 - this->x);
-
-
-		for (int i = 0; i < 5; i++) {
-			this->directions.push(variateAngle(tempAngle));
-		}
-	}
-
 	//if (directions.size() == 0) {
-	//	float tempAngle = atan2f(player->getY() - this->y, player->getX() - this->x);
+	//	float tempAngle = atan2f(0 - this->y, 0 - this->x);
 
 
 	//	for (int i = 0; i < 5; i++) {
 	//		this->directions.push(variateAngle(tempAngle));
 	//	}
 	//}
+
+	if (directions.size() == 0) {
+		float tempAngle = atan2f(player->getY() - this->y, player->getX() - this->x);
+
+
+		for (int i = 0; i < 5; i++) {
+			this->directions.push(variateAngle(tempAngle));
+		}
+	}
 
 }
 

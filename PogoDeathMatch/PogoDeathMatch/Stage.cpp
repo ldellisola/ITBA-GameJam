@@ -75,7 +75,6 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 
 		this->draw();
 		this->player->draw();
-		//window.update();
 		for (int i = 0; i < this->zombies.size(); i++)
 			this->zombies[i]->draw();
 		al_flip_display();
