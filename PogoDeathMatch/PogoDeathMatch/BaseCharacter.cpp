@@ -4,11 +4,18 @@
 
 #define PI (3.141592)
 
-BaseCharacter::BaseCharacter()
-	:baseHeight(), baseSpeed(), BaseWidth(), dampCoef(), force(), mass()
-{
-}
 
+BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float height, float width, float damp, float sizeCoef)
+	: baseHeight(height), baseSpeed(speed), BaseWidth(width), dampCoef(damp), force(force), mass(mass), sizeCoef(sizeCoef)
+{
+	this->jumpSound = jump;
+	this->hitSound = hit;
+	this->sprite = sprite;
+
+	this->x = x;
+	this->y = y;
+	this->angle = 0;
+}
 
 BaseCharacter::~BaseCharacter()
 {
@@ -16,9 +23,27 @@ BaseCharacter::~BaseCharacter()
 
 void BaseCharacter::draw()
 {
-	//if (this->tick < 10) {
-	//	this->width =
-	//}
+	unsigned int tt = this->tick - this->maxTick / 2;
+
+	this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2));
+	this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2));
+
+	this->sprite->setDimensions(this->height, this->width);
+	this->sprite->setAngle(this->angle);
+
+	this->sprite->draw(this->x, this->y);
+
+
+}
+
+void BaseCharacter::playJumpSound()
+{
+	this->jumpSound->play();
+}
+
+void BaseCharacter::playHitSound()
+{
+	this->hitSound->play();
 }
 
 void BaseCharacter::update()

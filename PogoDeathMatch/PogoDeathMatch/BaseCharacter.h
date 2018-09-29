@@ -11,10 +11,12 @@ enum class Direction
 class BaseCharacter
 {
 public:
-	BaseCharacter();
+	BaseCharacter(AllegroSound * jump,AllegroSound * hit,AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float height, float width, float damp, float sizeCoef);
 	~BaseCharacter();
 
 	void draw();
+	void playJumpSound();
+	void playHitSound();
 	void update();
 
 
@@ -28,7 +30,7 @@ private:
 
 	float x, y, height, width;
 	float angle;
-	const float force, mass,baseSpeed, baseHeight, BaseWidth, dampCoef;
+	const float force, mass,baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
 	const unsigned int maxTick = 20;
 	float appliedForce = 0, speed;
 
