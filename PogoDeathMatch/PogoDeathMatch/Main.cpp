@@ -10,7 +10,7 @@
 int main(void) {
 
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
-
+	allegro.uninstallMouseAddon();
 	AllegroWindow window(1300, 600, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();
@@ -24,11 +24,11 @@ int main(void) {
 	window.setImageAsBackground();
 
 	AllegroSoundFactory soundF;
-	AllegroSound * zombieJump = soundF.create("", PlayMode::Once, 0);
+	AllegroSound * zombieJump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
 	Player player(nullptr, nullptr, &playerSprite, 200, 200);
-	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
+	Zombie zombie(zombieJump, nullptr, &zombieSprite, 500, 500);
 
 	stage.addZombie(&zombie);
 	stage.addPlayer(&player);

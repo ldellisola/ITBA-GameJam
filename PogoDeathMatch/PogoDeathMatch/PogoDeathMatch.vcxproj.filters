@@ -187,4 +187,21 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="GameMusic.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="MenuMusic.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="angrykitten.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="bounce.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="evillaugh.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
