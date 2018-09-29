@@ -22,5 +22,5 @@ public:
 	void rotateRight();
 private:
 	bool moving;
-	Rotation rotation;
+	Rotation rotation = Rotation::None;
 };

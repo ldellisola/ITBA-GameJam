@@ -60,11 +60,11 @@ void Player::setRotation(Rotation rot)
 
 void Player::rotateLeft()
 {
-	float a = 10 *(float)PI / 180.0;
+	float a = 0.3 *(float)PI / 180.0;
 	this->angle =  this->angle -a;
 }
 
 void Player::rotateRight()
 {
-	this->angle += 10*PI / 180.0;
+	this->angle += 0.3*PI / 180.0;
 }
