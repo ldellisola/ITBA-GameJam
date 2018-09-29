@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Allegro">
+      <UniqueIdentifier>{6ad9e47c-615e-4a02-bca8-36c10a167bf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Allegro\UI">
+      <UniqueIdentifier>{63780405-b303-4a45-83ac-d1e8ff719079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Allegro\Init">
+      <UniqueIdentifier>{73088664-e347-4186-9998-cce89a70b0a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Allegro\Else">
+      <UniqueIdentifier>{2c057469-78ad-4342-860b-aafb0bd6e7ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Allegro">
+      <UniqueIdentifier>{24d86ec7-e036-4c44-9920-bd2119b777af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Allegro\Init">
+      <UniqueIdentifier>{4b0e5c20-20b4-41c3-8130-219106da74e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Allegro\UI">
+      <UniqueIdentifier>{6a4937cc-8fd6-4cae-87ad-50f03c6352c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Allegro\Else">
+      <UniqueIdentifier>{d6b7f0bc-2a4e-4bd2-82ce-cc972c82d5e7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseCharacter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\AllegroV2\AllegroClassV2.cpp">
+      <Filter>Source Files\Allegro\Init</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroBox.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroButton.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroFont.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroLayout.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroMenu.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\WritableBox.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\WrittenBox.cpp">
+      <Filter>Source Files\Allegro\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroWindow.cpp">
+      <Filter>Source Files\Allegro\Else</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroSprite.cpp">
+      <Filter>Source Files\Allegro\Else</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroSound.cpp">
+      <Filter>Source Files\Allegro\Else</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroLog.cpp">
+      <Filter>Source Files\Allegro\Else</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroEvent.cpp">
+      <Filter>Source Files\Allegro\Else</Filter>
+    </ClCompile>
+    <ClCompile Include="Allegro\Allegro Wrapper\AllegroAnimation.cpp">
+      <Filter>Source Files\Allegro\Else</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Stage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCharacter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\AllegroV2\AllegroAddons.h">
+      <Filter>Header Files\Allegro\Init</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\AllegroV2\AllegroClassV2.h">
+      <Filter>Header Files\Allegro\Init</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\AllegroV2\AllegroFactory.h">
+      <Filter>Header Files\Allegro\Init</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroBox.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroButton.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroFont.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroLayout.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroMenu.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\WritableBox.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\WrittenBox.h">
+      <Filter>Header Files\Allegro\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroAnimation.h">
+      <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroEvent.h">
+      <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroLog.h">
+      <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroSound.h">
+      <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroSprite.h">
+      <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+    <ClInclude Include="Allegro\Allegro Wrapper\AllegroWindow.h">
+      <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
