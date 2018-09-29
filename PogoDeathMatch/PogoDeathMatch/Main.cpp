@@ -23,10 +23,11 @@ int main(void) {
 	
 
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
-
+	Player player(nullptr, nullptr, &playerSprite, 200, 200);
 	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
 
 	stage.addZombie(&zombie);
+	stage.addPlayer(&player);
 	// UI
 
 
