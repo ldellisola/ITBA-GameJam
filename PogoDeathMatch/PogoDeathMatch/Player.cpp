@@ -23,8 +23,19 @@ Player::~Player()
 
 void Player::update()
 {
+	switch (rotation)
+	{
+	case Rotation::Left:
+		this->rotateLeft();
+		break;
+		case Rotation::Right:
+		this->rotateRight();
+		break;
+	}
 	if (moving)
 		BaseCharacter::update();
+
+
 
 }
 
@@ -40,6 +51,11 @@ void Player::setMoving(bool moving_)
 void Player::setAngle(float x_, float y_)
 {
 	this->angle = atan2f(y_ - y, x_ - x);
+}
+
+void Player::setRotation(Rotation rot)
+{
+	this->rotation = rot;
 }
 
 void Player::rotateLeft()
