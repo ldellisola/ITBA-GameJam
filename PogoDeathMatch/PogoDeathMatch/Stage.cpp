@@ -47,7 +47,7 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		break;
 	case EventType::Timer:
 
-		this->player->update(ev.getX, ev.getY);
+		this->player->update(ev.getX(), ev.getY());
 		for (int i = 0; i < this->zombies.size(); i++) {
 			this->zombies[i]->calculateMovement(nullptr);
 			this->zombies[i]->update();

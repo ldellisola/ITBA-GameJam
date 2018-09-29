@@ -1,15 +1,8 @@
 #pragma once
 #include "BaseCharacter.h"
 
-#include <math.h>
 
-#define force (1)
-#define mass (1)
-#define speed (1)
-#define height (1)
-#define width (1)
-#define damp (1)
-#define sizeCoef (1)
+
 
 class Player :
 	public BaseCharacter
