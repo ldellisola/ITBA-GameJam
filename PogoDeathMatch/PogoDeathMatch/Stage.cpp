@@ -38,22 +38,33 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 	case EventType::DisplayClose:
 		return true;
 	case EventType::KeyDown:
-		if (ev.getValue() == ALLEGRO_KEY_W) {
+		switch (ev.getValue())
+		{
+		case ALLEGRO_KEY_W:
 			this->player->setMoving(true);
+			break;
+		case ALLEGRO_KEY_A:
+			this->player->rotateLeft();
+			break;
+		case ALLEGRO_KEY_D:
+			this->player->rotateRight();
+			break;
 		}
 		break;
 	case EventType::KeyUp:
-		if (ev.getValue() == ALLEGRO_KEY_W) {
+
+		switch (ev.getValue())
+		{
+		case ALLEGRO_KEY_W:
+		case ALLEGRO_KEY_A:
+		case ALLEGRO_KEY_D:
 			this->player->setMoving(false);
 		}
 		break;
 
 	case EventType::Timer:
 
-		int x, y;
-		if (al_get_mouse_cursor_position(&x, &y)) {
-			this->player->setAngle(x, y);
-		}
+
 
 		this->player->update();
 

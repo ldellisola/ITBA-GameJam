@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#define PI (3.141592)
+
 
 
 BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float height, float width, float damp, float sizeCoef)
@@ -47,22 +47,19 @@ void BaseCharacter::playHitSound()
 void BaseCharacter::update()
 {
 	if (this->appliedForce == 0) {
-		this->x += cosf(this->angle) * speed;
-		this->y += sinf(this->angle) * speed;
+		this->x += cosf(this->angle) * baseSpeed;
+		this->y += sinf(this->angle) * baseSpeed;
 	}
 	else {
 		// Solo se mueve en la direccion que lo empujaron
-		this->x += cosf(this->angle) * (speed + appliedForce);
-		this->y += sinf(this->angle) * (speed + appliedForce);
+		this->x += cosf(this->angle) * (baseSpeed + appliedForce);
+		this->y += sinf(this->angle) * (baseSpeed + appliedForce);
 	}
 	this->updateTick();
 	this->DamperForce();
 }
 
-void BaseCharacter::setDirection(Direction dir)
-{
-	this->dir= dir;
-}
+
 
 bool BaseCharacter::hit(BaseCharacter * other)
 {

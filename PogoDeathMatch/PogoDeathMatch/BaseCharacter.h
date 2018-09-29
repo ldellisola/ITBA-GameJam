@@ -3,6 +3,7 @@
 #include "Allegro/Allegro Wrapper/AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroSound.h"
 
+#define PI (3.141592)
 
 class BaseCharacter
 {
@@ -20,8 +21,8 @@ public:
 
 protected:
 	float x, y, height, width;
-	float angle;
-
+	float angle,speed;
+	const float force, mass, baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
 private:
 	bool hit(BaseCharacter * other);
 	void applyForce(float force);
@@ -31,9 +32,9 @@ private:
 	void updateTick();
 
 
-	const float force, mass,baseSpeed, baseHeight, BaseWidth, dampCoef, sizeCoef;
+	
 	const unsigned int maxTick = 100;
-	float appliedForce = 0, speed;
+	float appliedForce = 0;
 
 	unsigned int tick =0;
 

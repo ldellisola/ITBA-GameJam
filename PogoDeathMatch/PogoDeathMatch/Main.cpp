@@ -8,7 +8,7 @@
 
 
 int main(void) {
-	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 60);
+	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
 	AllegroWindow window(1300, 600, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();

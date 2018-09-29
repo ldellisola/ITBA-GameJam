@@ -136,7 +136,7 @@ void AllegroLayout::setUp()
 		//al_set_target_bitmap(this->layout);
 
 		if (backgroundImage)
-			al_draw_scaled_bitmap(this->image, 0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image), 0, 0, this->w, this->h, 0);
+			al_draw_scaled_bitmap(this->image, 0, 0, al_get_bitmap_width(image), al_get_bitmap_height(image), 0, 0, this->w, this->h,0);
 		else
 			al_clear_to_color(color);
 

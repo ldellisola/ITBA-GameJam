@@ -14,7 +14,8 @@ public:
 	void update();
 	void setMoving(bool moving_);
 	void setAngle(float x_, float y_);
+	void rotateLeft();
+	void rotateRight();
 private:
 	bool moving;
-	unsigned angle;
 };
