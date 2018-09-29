@@ -34,6 +34,9 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 	case EventType::KeyDown:
 		// movimiento del jugador
 		break;
+	case EventType::KeyUp:
+		if(ev.getValue == ALLEGRO_KEY_)
+		break;
 	case EventType::Timer:
 
 		this->player->update();
