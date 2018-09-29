@@ -15,6 +15,8 @@ public:
 	void playJumpSound();
 	void playHitSound();
 	virtual void update();
+	bool hit(BaseCharacter * other);
+	void applyForce(float force);
 
 	float getX() { return x; }
 	float getY() { return y; }
@@ -25,12 +27,10 @@ protected:
 	const float force, mass, baseSpeed, baseRadius, dampCoef, sizeCoef;
 	void updateTick();
 private:
-	bool hit(BaseCharacter * other);
-	void applyForce(float force);
 
 	void DamperForce();
 	
-	const unsigned int maxTick = 300;
+	const unsigned int maxTick = 400;
 	float appliedForce = 0;
 
 	unsigned int tick =0;

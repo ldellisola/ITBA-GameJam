@@ -44,10 +44,10 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->player->setMoving(true);
 			break;
 		case ALLEGRO_KEY_A:
-			this->player->setRotation(Rotation::Left);
+			this->player->setRotation(Rotation::Left,true);
 			break;
 		case ALLEGRO_KEY_D:
-			this->player->setRotation(Rotation::Right);
+			this->player->setRotation(Rotation::Right,true);
 			break;
 		}
 		break;
@@ -59,21 +59,25 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->player->setMoving(false);
 			break;
 		case ALLEGRO_KEY_A:
-			this->player->setRotation(Rotation::None);
+			this->player->setRotation(Rotation::Left,false);
 			break;
 		case ALLEGRO_KEY_D:
-			this->player->setRotation(Rotation::None);
+			this->player->setRotation(Rotation::Right,false);
 			break;
 			
 		}
 		break;
 
 	case EventType::Timer:
-
+	
+		for (int i = 0; i < this->zombies.size(); i++) {
+			this->player->hit(zombies[i]);
+		}
 		this->player->update();
 
 		for (int i = 0; i < this->zombies.size(); i++) {
 
+			this->zombies[i]->hit(player);
 			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}

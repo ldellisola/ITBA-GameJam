@@ -67,13 +67,17 @@ void BaseCharacter::update()
 
 bool BaseCharacter::hit(BaseCharacter * other)
 {
-	/*if (this->x <= (other->x + other->BaseWidth) && (this->x + this->width) >= other->x)
-		if ((this->y + this->height >= other->y) && (this->y) <= (other->y + other->baseHeight))
-			if ( (sqrtf(powf(this->angle - other->angle, 2)) >=0)  &&  (sqrtf(powf(this->angle - other->angle, 2))<=PI/2.0)) {
+
+	if (other->x - this->x <= other->radius + this->radius) {
+		if (other->y - this-> y <= other->radius + this->radius) {
+			if ((sqrtf(powf(this->angle - other->angle, 2)) >= 0) && (sqrtf(powf(this->angle - other->angle, 2)) <= PI / 2.0)) {
+				other->angle = this->angle;
 				other->applyForce(this->force);
 				return true;
 			}
-	return false;*/
+		}
+	}
+
 	return false;
 }
 
