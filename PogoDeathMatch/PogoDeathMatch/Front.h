@@ -47,21 +47,27 @@ class Menu {
 
 public:
 
-	Menu() : font("UbuntuMono-R.ttf", FONT1_SIZE, FONT1_ID), layout(WIDTH, HEIGHT, "PogoDeathmatch1.png", LayoutDrawMode::Mid) {
+	Menu() : font("UbuntuMono-R.ttf", FONT1_SIZE, FONT1_ID), layout(WIDTH, HEIGHT, "PogoDeathmatch1.png", LayoutDrawMode::Slow) {
 
 		AllegroColorFactory colorF;
 
-		boxes.addBox(new AllegroToggle(BUTTON_POS_X, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, PLAY_TEXT, &this->font, colorF.create("black"), PLAY_ID));
-		boxes.addBox(new AllegroToggle(BUTTON_POS_X + BUTTON_TAB, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, CONTINUE_TEXT, &this->font, colorF.create("black"), CONT_ID));
-		boxes.addBox(new AllegroToggle(BUTTON_POS_X + BUTTON_TAB * 2, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, EXIT_TEXT, &this->font, colorF.create("black"), EXIT_ID));
+		boxes.addBox(new AllegroButton(BUTTON_POS_X, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, PLAY_TEXT, &this->font, colorF.create("black"), PLAY_ID));
+		boxes[PLAY_ID]->loadImageBackground("examplebutton1.png");
+		boxes[PLAY_ID]->setImageAsBackground();
+		boxes.addBox(new AllegroButton(BUTTON_POS_X + BUTTON_TAB, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, CONTINUE_TEXT, &this->font, colorF.create("black"), CONT_ID));
+		boxes[CONT_ID]->loadImageBackground("examplebutton1.png");
+		boxes[CONT_ID]->setImageAsBackground();
+		boxes.addBox(new AllegroButton(BUTTON_POS_X + BUTTON_TAB * 2, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, EXIT_TEXT, &this->font, colorF.create("black"), EXIT_ID));
+		boxes[EXIT_ID]->loadImageBackground("examplebutton1.png");
+		boxes[EXIT_ID]->setImageAsBackground();
 
-		layout.addBox(boxes[0]);
-		layout.addBox(boxes[1]);
-		layout.addBox(boxes[2]);
+		layout.addBox(boxes[PLAY_ID]);
+		layout.addBox(boxes[CONT_ID]);
+		layout.addBox(boxes[EXIT_ID]);
 
 	};
 
-	AllegroLayout * getLayout() { return &this->layout; }
+	AllegroLayout&  getLayout() { return (this->layout); }
 
 	int checkForPress(float mouseX, float mouseY, double timeStamp);
 

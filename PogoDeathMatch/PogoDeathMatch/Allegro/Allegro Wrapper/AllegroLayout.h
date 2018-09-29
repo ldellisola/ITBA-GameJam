@@ -70,6 +70,8 @@ public:
 	void loadImageBackground(ALLEGRO_BITMAP * image);
 	void loadImageBackground(AllegroBox& image);
 
+	void drawScaled(float width, float height);
+
 	// It sets a previusly loaded image as the background of the window
 	void setImageAsBackground();
 
