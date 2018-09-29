@@ -8,11 +8,9 @@
 
 
 int main(void) {
-<<<<<<< HEAD
+
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
-=======
-	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 60);
->>>>>>> parent of d9b9120... El menu funca che
+
 	AllegroWindow window(1300, 600, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();
@@ -24,11 +22,7 @@ int main(void) {
 	AllegroSprite playerSprite("PlayerSprite.png");
 	AllegroSprite stageSprite("StageSprite.png",2000,2000);
 	window.setImageAsBackground();
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> parent of d9b9120... El menu funca che
 
 	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
 	Player player(nullptr, nullptr, &playerSprite, 200, 200);
@@ -36,32 +30,27 @@ int main(void) {
 
 	stage.addZombie(&zombie);
 	stage.addPlayer(&player);
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of d9b9120... El menu funca che
 	// UI
 
 
 
 	//
 
-<<<<<<< HEAD
+
 	//Menu mainMenu;
 	//window.insertLayout(mainMenu.getLayout());
 
-	bool leave = false;
 
 
 	/*AllegroEvent alEv(EventType::Empty, 0);*/
-=======
->>>>>>> parent of d9b9120... El menu funca che
+
 
 	bool leave = false;
 	do {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
-<<<<<<< HEAD
+
 			leave = stage.run(eventHandler.ObtainEvent(), window);
 
 			//alEv = eventHandler.ObtainEvent();
@@ -72,11 +61,9 @@ int main(void) {
 			//	if (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp()) == EXIT)
 			//		leave = true;
 			//}
-=======
 
-			leave = stage.run(eventHandler.ObtainEvent(),window );
+
 			
->>>>>>> parent of d9b9120... El menu funca che
 		}
 
 	} while (!leave);
