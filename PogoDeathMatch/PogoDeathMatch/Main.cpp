@@ -32,7 +32,8 @@ int main(void) {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
 
-			stage.run()
+			leave = stage.run(eventHandler.ObtainEvent(),window );
+			
 		}
 
 	} while (!leave);

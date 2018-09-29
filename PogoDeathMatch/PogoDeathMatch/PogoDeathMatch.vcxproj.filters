@@ -90,6 +90,12 @@
     <ClCompile Include="Allegro\Allegro Wrapper\AllegroAnimation.cpp">
       <Filter>Source Files\Allegro\Else</Filter>
     </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stage.h">
@@ -145,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="Allegro\Allegro Wrapper\AllegroWindow.h">
       <Filter>Header Files\Allegro\Else</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
