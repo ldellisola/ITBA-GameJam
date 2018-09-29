@@ -12,7 +12,8 @@ Stage::~Stage()
 }
 
 
-void Stage::draw() {
+void Stage::draw() 
+{
 	this->stageSprite->draw(this->centerX, this->centerY);
 }
 
@@ -23,5 +24,6 @@ void Stage::addPlayer(BaseCharacter * player_)
 
 void Stage::addZombie(BaseCharacter * zombie_)
 {
-	
+	this->zombies.push_back(zombie_);
 }
+
