@@ -1,8 +1,7 @@
 #include "Stage.h"
 #include "Front.h"
 
-bool intersects(Player * player, int x, int y);
-
+bool intersects(Player * player, Stage*stage, int x, int y);
 
 Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, unsigned centerY_)
 {
@@ -133,23 +132,22 @@ void Stage::update() {
 
 void Stage::randomlyGenerateZombies()
 {
-	int prob = rand() % 500;
+	int prob = rand() % 100;
 	int x, y;
 
 
 	if (prob == 0) {
 		do {
-			x = this->centerX + (rand() % (this->radius)) - this->radius / 2.0;
-			y = this->centerY + (rand() % (this->radius)) - this->radius / 2.0;
-		} while (!intersects(player, x, y));
+			x = (rand() % (this->radius*2)) ;
+			y = (rand() % (this->radius*2)) ;
+		} while (!intersects(player,this, x, y));
 		this->zombies.push_back(new Zombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->zombieSprite, x, y));
 	}
 }
 
 
-bool intersects(Player * player, int x, int y) {
-	if (player->getX() - player->getR() / 2.0 <= x && x <= player->getX() + 2 * player->getR())
-		if (player->getY() - player->getR() / 2.0 <= y && y <= player->getY() + 2 * player->getR())
+bool intersects(Player * player,Stage*stage,  int x, int y) {
+	if (hypotf(player->getX()-x,player->getY() - y)>2 * player->getR() && hypotf(stage->getX() - x,stage->getY() - y ) <stage->getR())
 			return false;
 	return true;
 }

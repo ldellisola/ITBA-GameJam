@@ -8,8 +8,8 @@
 #include "Allegro/Allegro Wrapper/AllegroWindow.h"
 #include "Allegro/Allegro Wrapper/AllegroEvent.h"
 
-#define AlanDisplay
-//#define OtherDisplay
+//#define AlanDisplay
+#define OtherDisplay
 
 #ifdef AlanDisplay
 #define DisplaySquare (600)

@@ -2,11 +2,20 @@
 #include "Front.h"
 #include <math.h>
 
+#ifdef OtherDisplay
+#define Force (50)
+#define Speed (15)
+#endif
+#ifdef AlanDisplay
+#define Force (50)
+#define Speed (10)
+#endif 
 
-#define Force (40)
+
+
 
 #define Mass (10)
-#define Speed (5)
+
 #define Radius (charSquare)
 #define Damp (1)
 #define SizeCoef (7)

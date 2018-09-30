@@ -6,10 +6,18 @@ float variateAngle(float angle);
 
 #define Radius (charSquare)
 
+#ifdef OtherDisplay
+#define Force (1)
+#define Speed (1)
+#endif
+#ifdef AlanDisplay
 #define Force (50)
-#define Mass (10)
-
 #define Speed (10)
+#endif 
+
+
+
+#define Mass (10)
 
 #define Damp (1)
 #define SizeCoef (7)

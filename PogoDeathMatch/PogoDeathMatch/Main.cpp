@@ -10,7 +10,7 @@
 
 
 int main(void) {
-
+	srand(time(nullptr));
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
 	AllegroWindow window(DisplaySquare, DisplaySquare, allegro.getEventQueue(), "Albondicats");
 	window.open();
@@ -87,23 +87,23 @@ int main(void) {
 				leave = true;
 			window.update();
 
-
+			
 		}
 
 	} while (!leave);
 	
 
-	allegro.uninstallMouseAddon();
+	//allegro.uninstallMouseAddon();
 
-	leave = false;
-	do {
-		eventHandler.getEvent();
-		if (eventHandler.isThereEvent()) {
+	//leave = false;
+	//do {
+	//	eventHandler.getEvent();
+	//	if (eventHandler.isThereEvent()) {
 
-			leave = stage.run(eventHandler.ObtainEvent(), window);			
-		}
+	//		leave = stage.run(eventHandler.ObtainEvent(), window);			
+	//	}
 
-	} while (!leave);
+	//} while (!leave);
 
 
 

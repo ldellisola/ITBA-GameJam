@@ -22,6 +22,10 @@ public:
 
 	bool run(AllegroEvent ev, AllegroWindow& window);
 
+	float getX() { return centerX; }
+	float getY() { return centerY; }
+	float getR() { return radius; }
+
 	void randomlyGenerateZombies();
 
 private:
