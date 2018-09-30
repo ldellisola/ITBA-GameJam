@@ -5,7 +5,7 @@ class FastZombie :
 	public Zombie
 {
 public:
-	FastZombie();
+	FastZombie(AllegroSound *jump, AllegroSound * death, AllegroSprite * sprite, float x, float y, float radius);
 	~FastZombie();
 };
 
