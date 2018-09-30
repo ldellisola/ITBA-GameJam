@@ -27,7 +27,7 @@ int main(void) {
 	AllegroSoundFactory soundF;
 	AllegroSound * menuMusic = soundF.create("Menu.ogg", PlayMode::Loop, 0);
 	AllegroSound * gameOverMusic = soundF.create("Game Over.ogg", PlayMode::Loop, 0);
-	AllegroSound * gameMusic = soundF.create("GameMusic.mp3", PlayMode::Loop, 0);
+	AllegroSound * gameMusic = soundF.create("GameMusic.ogg", PlayMode::Loop, 0);
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
 
