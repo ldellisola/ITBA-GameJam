@@ -174,7 +174,7 @@ void Stage::randomlyGenerateZombies()
 
 
 bool intersects(Player * player,Stage*stage,  int x, int y) {
-	if (hypotf(player->getX()-x,player->getY() - y)>2 * player->getR() && hypotf(stage->getX() - x,stage->getY() - y ) <stage->getR())
+	if (hypotf(stage->getX() - x  ,stage->getY() - y  ) < stage->getR())
 			return false;
 	return true;
 }

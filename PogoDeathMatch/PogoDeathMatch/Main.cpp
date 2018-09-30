@@ -25,6 +25,7 @@ int main(void) {
 	window.setImageAsBackground();
 
 	AllegroSoundFactory soundF;
+	AllegroSound * menuMusic = soundF.create("Menu.ogg", PlayMode::Loop, 0);
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
 
@@ -46,7 +47,9 @@ int main(void) {
 
 	bool isFirstTime = true;
 	bool leave = false;
+
 	gameState currentState = gameState::PAUSE;
+
 
 	do {
 		eventHandler.getEvent();
