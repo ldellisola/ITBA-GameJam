@@ -25,10 +25,10 @@ int main(void) {
 	window.setImageAsBackground();
 
 	AllegroSoundFactory soundF;
-	AllegroSound * menuMusic = soundF.create("Menu.ogg", PlayMode::Loop, 0);
-	AllegroSound * gameOverMusic = soundF.create("Game Over.ogg", PlayMode::Loop, 0);
-	AllegroSound * gameMusic = soundF.create("GameMusic.ogg", PlayMode::Loop, 0);
-	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
+	AllegroSound * menuMusic = soundF.create("Menu.ogg", PlayMode::Loop, 1,1,6);
+	AllegroSound * gameOverMusic = soundF.create("Game Over.ogg", PlayMode::Loop, 2, 1, 6);
+	AllegroSound * gameMusic = soundF.create("GameMusic.ogg", PlayMode::Loop, 3, 1, 6);
+	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 4);
 
 
 	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
@@ -50,10 +50,6 @@ int main(void) {
 	gameState currentState = gameState::PAUSE;
 
 
-	
-
-
-
 	menuMusic->play();
 
 	do {
@@ -67,9 +63,9 @@ int main(void) {
 			if (currentState == gameState::GAME_OVER) {
 				
 				if (alEv.getType() == EventType::KeyDown) {
-					currentState = gameState::PAUSE;
-					gameOverMusic->stop();
+					al_stop_samples();
 					menuMusic->play();
+					currentState = gameState::PAUSE;
 					window.deleteLayout();
 					window.insertLayout(mainMenu.getLayout());
 				}
@@ -92,6 +88,8 @@ int main(void) {
 
 				case PLAY:
 					menuMusic->stop();
+					
+					
 					gameMusic->play();
 					stage.restart();
 
@@ -99,9 +97,9 @@ int main(void) {
 					isFirstTime = false;
 
 				case CONTINUE:
-
 					currentState = gameState::PLAYING;
 					if (!isFirstTime) {
+						gameMusic->play();
 						do {
 							eventHandler.getEvent();
 							if (eventHandler.isThereEvent()) {
@@ -109,8 +107,11 @@ int main(void) {
 							}
 
 						} while (currentState == gameState::PLAYING);
-						gameMusic->stop();
-						menuMusic->play();
+						al_stop_samples();
+						//gameMusic->stop();
+						if (currentState == gameState::PAUSE)
+							menuMusic->play();
+						
 						break;
 					}
 				}
@@ -120,8 +121,10 @@ int main(void) {
 		}
 
 		if (currentState == gameState::GAME_OVER) {
-			menuMusic->stop();
-			gameOverMusic->play();
+			if (!isFirstTime) {
+				al_stop_samples();
+				gameOverMusic->playAtGain(5.0);
+			}
 
 			stage.gameover();
 			currentState == gameState::PAUSE;
@@ -131,6 +134,7 @@ int main(void) {
 
 		}
 		else if (currentState == gameState::QUIT) {
+			al_stop_samples();
 			leave = true;
 		}
 

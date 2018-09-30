@@ -239,11 +239,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="angrykitten.wav" />
     <Media Include="bounce.wav" />
-    <Media Include="evillaugh.wav" />
-    <Media Include="GameMusic.mp3" />
-    <Media Include="MenuMusic.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

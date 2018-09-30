@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Front.h"
 
+
 bool intersects(Player * player, Stage*stage, int x, int y);
 
 Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, unsigned centerY_)
@@ -174,10 +175,11 @@ void Stage::randomlyGenerateZombies()
 {
 
 	int base = maxZombies - this->zombies.size();
-	int prob = (rand() % (int)((1000)*(powf(base,3))/sqrtf(score)));
-	std::cout << prob << std::endl;
+	int prob = (rand() % (int)((1250)*(powf(base,3))/sqrtf(score)));
+	prob *= this->zombies.size() + 1;
+	//std::cout << prob << std::endl;
 	int x, y;
-	static int zombiesSpawned = 0;
+
 
 	switch (zombiesSpawned) {
 	case 5: maxZombies = 2; break;
@@ -194,7 +196,7 @@ void Stage::randomlyGenerateZombies()
 	case 180: maxZombies = 15; break;
 	}
 
-	if (prob < 20) {
+	if (prob < 50) {
 
 		int index = (rand() % (5));
 		int pos[10] = { this->radius,this->radius,
@@ -206,7 +208,7 @@ void Stage::randomlyGenerateZombies()
 
 
 		if (prob < 1 && zombiesSpawned > 40) {
-			this->zombies.push_back(new BossZombie(nullptr, nullptr, this->bossZombieSprite, pos[2 * index], pos[2 * index + 1], 200));
+			this->zombies.push_back(new BossZombie(nullptr, nullptr, this->bossZombieSprite, pos[0], pos[1], 200));
 			++zombiesSpawned;
 		}
 		else if (prob < 5 && zombiesSpawned>30) {
@@ -218,7 +220,33 @@ void Stage::randomlyGenerateZombies()
 			++zombiesSpawned;
 		}
 		else {
-			this->zombies.push_back(new SlowZombie(nullptr, nullptr, this->slowZombieSprite, pos[2 * index], pos[2 * index + 1], 75));
+			this->zombies.push_back(new SlowZombie(nullptr, nullptr, this->slowZombieSprite, pos[2 * index], pos[2 * index + 1], 80));
+			++zombiesSpawned;
+		}
+	}
+
+	if (zombies.size() == 0) {
+		int index = (rand() % (5));
+		int pos[10] = { this->radius,this->radius,
+						this->radius,this->radius *1.5,
+						this->radius,this->radius * 0.5,
+						this->radius *0.5,this->radius,
+						this->radius * 1.5, this->radius };
+		int a = rand() % 20;
+		if (prob < 1 && zombiesSpawned > 40) {
+			this->zombies.push_back(new BossZombie(nullptr, nullptr, this->bossZombieSprite, pos[0], pos[ 1], 200));
+			++zombiesSpawned;
+		}
+		else if (prob < 5 && zombiesSpawned>30) {
+			this->zombies.push_back(new FatZombie(nullptr, nullptr, this->fatZombieSprite, pos[2 * index], pos[2 * index + 1], 150));
+			++zombiesSpawned;
+		}
+		else if (prob < 10 && zombiesSpawned>10) {
+			this->zombies.push_back(new FastZombie(nullptr, nullptr, this->fastZombieSprite, pos[2 * index], pos[2 * index + 1], 50));
+			++zombiesSpawned;
+		}
+		else {
+			this->zombies.push_back(new SlowZombie(nullptr, nullptr, this->slowZombieSprite, pos[2 * index], pos[2 * index + 1], 80));
 			++zombiesSpawned;
 		}
 	}
@@ -238,11 +266,11 @@ void Stage::restart() {
 	this->player->setRotation(Rotation::Left, false);
 	this->player->setRotation(Rotation::Right, false);
 	this->zombiesSpawned = 0;
+	this->maxZombies = 1;
 	this->score = 1;
+	this->scoreBox->setText("0");
 
-
-	for (int i = 0; i < this->zombies.size(); i++)
-		zombies.erase(zombies.begin() + i);
+	zombies.clear();
 
 
 }

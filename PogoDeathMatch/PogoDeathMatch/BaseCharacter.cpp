@@ -100,6 +100,6 @@ void BaseCharacter::DamperForce()
 void BaseCharacter::updateTick()
 {
 	if (this->tick == 0 && this->jumpSound != nullptr)
-		this->playJumpSound();
+ 		this->playJumpSound();
 	this->tick = (++tick) % maxTick;
 }
