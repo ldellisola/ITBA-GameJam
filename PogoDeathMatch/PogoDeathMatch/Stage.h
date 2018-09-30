@@ -2,6 +2,10 @@
 
 #include "BaseCharacter.h"
 #include "Zombie.h"
+#include "FastZombie.h"
+#include "FatZombie.h"
+#include "SlowZombie.h"
+#include "BossZombie.h"
 #include "Player.h"
 #include "Allegro\Allegro Wrapper\AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroSound.h"

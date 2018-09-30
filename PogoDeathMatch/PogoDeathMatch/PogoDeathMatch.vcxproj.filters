@@ -37,11 +37,14 @@
     <Filter Include="Header Files\Allegro\Else">
       <UniqueIdentifier>{d6b7f0bc-2a4e-4bd2-82ce-cc972c82d5e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Personajes">
+      <UniqueIdentifier>{04b63751-2236-44f3-92c4-a0b48fc3e722}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Personajes">
+      <UniqueIdentifier>{c17095b6-ba4d-4cc8-93f7-18ae4882e515}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BaseCharacter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,21 +93,33 @@
     <ClCompile Include="Allegro\Allegro Wrapper\AllegroAnimation.cpp">
       <Filter>Source Files\Allegro\Else</Filter>
     </ClCompile>
-    <ClCompile Include="Zombie.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Front.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseCharacter.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="BossZombie.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="FastZombie.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="FatZombie.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="SlowZombie.cpp">
+      <Filter>Source Files\Personajes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BaseCharacter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Allegro\AllegroV2\AllegroAddons.h">
@@ -155,14 +170,29 @@
     <ClInclude Include="Allegro\Allegro Wrapper\AllegroWindow.h">
       <Filter>Header Files\Allegro\Else</Filter>
     </ClInclude>
-    <ClInclude Include="Zombie.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Front.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseCharacter.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="BossZombie.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="FastZombie.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="FatZombie.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="SlowZombie.h">
+      <Filter>Header Files\Personajes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +219,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Game Over.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Menu.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Media Include="GameMusic.mp3">
