@@ -11,8 +11,8 @@
 #define FONT1_SIZE 50
 #define FONT1_ID 1
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 1300
+#define HEIGHT 600
 #define BUTTON_SIZE_H 100
 #define BUTTON_SIZE_W 300
 #define BUTTON_POS_Y 900
@@ -47,7 +47,7 @@ class Menu {
 
 public:
 
-	Menu() : font("UbuntuMono-R.ttf", FONT1_SIZE, FONT1_ID), layout(WIDTH, HEIGHT, "PogoDeathmatch1.png", LayoutDrawMode::Mid) {
+	Menu() : font("UbuntuMono-R.ttf", FONT1_SIZE, FONT1_ID), layout(WIDTH, HEIGHT, "PogoDeathmatch1.png", LayoutDrawMode::Slow) {
 
 		AllegroColorFactory colorF;
 
@@ -55,9 +55,9 @@ public:
 		boxes.addBox(new AllegroToggle(BUTTON_POS_X + BUTTON_TAB, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, CONTINUE_TEXT, &this->font, colorF.create("black"), CONT_ID));
 		boxes.addBox(new AllegroToggle(BUTTON_POS_X + BUTTON_TAB * 2, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, EXIT_TEXT, &this->font, colorF.create("black"), EXIT_ID));
 
-		layout.addBox(boxes[0]);
-		layout.addBox(boxes[1]);
-		layout.addBox(boxes[2]);
+		layout.addBox(boxes[PLAY_ID]);
+		layout.addBox(boxes[CONT_ID]);
+		layout.addBox(boxes[EXIT_ID]);
 
 	};
 

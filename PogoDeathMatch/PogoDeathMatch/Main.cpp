@@ -2,6 +2,7 @@
 #include "Allegro/Allegro Wrapper/AllegroWindow.h"
 #include "Allegro/Allegro Wrapper/AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroEvent.h"
+#include "Front.h"
 
 #include "Zombie.h"
 #include "Stage.h"
@@ -10,7 +11,6 @@
 int main(void) {
 
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
-	allegro.uninstallMouseAddon();
 	AllegroWindow window(1300, 600, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();
@@ -35,9 +35,36 @@ int main(void) {
 
 	// UI
 
+	Menu mainMenu;
+	window.insertLayout(*mainMenu.getLayout());
 
+	AllegroEvent alEv(EventType::Empty, 0);
+
+	bool leave = false;
+	do {
+		eventHandler.getEvent();
+		if (eventHandler.isThereEvent()) {
+
+			alEv = eventHandler.ObtainEvent();
+			
+
+
+			if (alEv.getType() == EventType::MouseDown) {
+				if (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp()) == EXIT)
+					leave = true;
+			}
+			else if (alEv.getType() == EventType::DisplayClose)
+				leave = true;
+			window.update();
+
+
+		}
+
+	} while (!leave);
+	
 
 	//
+	allegro.uninstallMouseAddon();
 
 
 	//Menu mainMenu;
@@ -46,24 +73,12 @@ int main(void) {
 	/*AllegroEvent alEv(EventType::Empty, 0);*/
 
 
-	bool leave = false;
+	leave = false;
 	do {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
 
-			leave = stage.run(eventHandler.ObtainEvent(), window);
-
-			//alEv = eventHandler.ObtainEvent();
-			//window.update();
-
-
-			//if (alEv.getType() == EventType::MouseDown) {
-			//	if (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp()) == EXIT)
-			//		leave = true;
-			//}
-
-
-			
+			leave = stage.run(eventHandler.ObtainEvent(), window);			
 		}
 
 	} while (!leave);
