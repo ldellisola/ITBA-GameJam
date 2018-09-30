@@ -6,7 +6,7 @@
 #define FastMass (10)
 #define FastSpeed (15)
 #define FastDamp (1.5)
-#define FastSizeCoef (7)
+#define FastSizeCoef (25)
 #define FastPoints (20)
 
 

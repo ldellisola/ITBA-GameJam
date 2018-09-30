@@ -67,7 +67,16 @@ int main(void) {
 
 			if (alEv.getType() == EventType::MouseDown) {
 				switch (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp())) {
-
+				case INSTRUCTIONS:
+					mainMenu.runInstructions(&window,eventHandler);
+					window.deleteLayout();
+					window.insertLayout(mainMenu.getLayout());
+					break;
+				case CREDITS:
+					mainMenu.runCredits(&window, eventHandler);
+					window.deleteLayout();
+					window.insertLayout(mainMenu.getLayout());
+					break;
 				case EXIT: leave = true;
 					break;
 

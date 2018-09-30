@@ -2,9 +2,9 @@
 
 
 
-#define FatForce (15)
-#define FatMass (50)
-#define FatSpeed (2)
+#define FatForce (30)
+#define FatMass (30)
+#define FatSpeed (3)
 #define FatDamp (1.5)
 #define FatSizeCoef (20)
 #define FatPoints (50)

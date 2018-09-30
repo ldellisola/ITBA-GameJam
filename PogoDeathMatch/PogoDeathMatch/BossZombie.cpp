@@ -2,11 +2,11 @@
 
 
 
-#define BossForce (25)
-#define BossMass (60)
+#define BossForce (40)
+#define BossMass (40)
 #define BossSpeed (4)
 #define BossDamp (2.5)
-#define BossSizeCoef (20)
+#define BossSizeCoef (30)
 #define BossPoints (100)
 
 BossZombie::BossZombie(AllegroSound * jump, AllegroSound * death, AllegroSprite * sprite, float x, float y, float radius)
