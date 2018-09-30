@@ -70,3 +70,9 @@ void Player::rotateRight()
 {
 	this->angle += 15*PI / 180.0;
 }
+
+void Player::setCoords(float coordX, float coordY)
+{
+	this->x = coordX;
+	this->y = coordY;
+}

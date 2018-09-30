@@ -44,7 +44,7 @@ int main(void) {
 
 	bool isFirstTime = true;
 	bool leave = false;
-	bool isPlaying = true;
+	gameState currentState = gameState::PAUSE;
 
 	do {
 		eventHandler.getEvent();
@@ -62,10 +62,10 @@ int main(void) {
 
 				case PLAY:
 
-					Stage.restart();
+					stage.restart();
 
 				isFirstTime = false;
-				isPlaying = true;
+				currentState = gameState::PLAYING;
 
 				case CONTINUE:
 
@@ -73,10 +73,10 @@ int main(void) {
 						do {
 							eventHandler.getEvent();
 							if (eventHandler.isThereEvent()) {
-								isPlaying = stage.run(eventHandler.ObtainEvent(), window);
+								currentState = stage.run(eventHandler.ObtainEvent(), window);
 							}
 
-						} while (isPlaying);
+						} while (currentState == gameState::PLAYING);
 						break;
 					}
 				}
@@ -84,8 +84,17 @@ int main(void) {
 			else if (alEv.getType() == EventType::DisplayClose)
 				leave = true;
 			window.update();
+		}
 
+		if (currentState == gameState::GAME_OVER) {
 
+			//Stage.gameOver();
+			currentState == gameState::PAUSE;
+			isFirstTime = true;
+
+		}
+		else if (currentState == gameState::QUIT) {
+			leave = true;
 		}
 
 	} while (!leave);
@@ -93,19 +102,5 @@ int main(void) {
 
 	allegro.uninstallMouseAddon();
 
-	leave = false;
-	do {
-		eventHandler.getEvent();
-		if (eventHandler.isThereEvent()) {
-
-			leave = stage.run(eventHandler.ObtainEvent(), window);			
-		}
-
-	} while (!leave);
-
-
-
-
-
-	return 1;
+	return 0;
 }

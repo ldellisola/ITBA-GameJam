@@ -9,6 +9,9 @@
 #include "Allegro/Allegro Wrapper/AllegroWindow.h"
 #include <vector>
 
+
+enum class gameState { PLAYING, PAUSE, GAME_OVER, QUIT };
+
 class Stage
 {
 public:
@@ -20,12 +23,13 @@ public:
 	void loadZombieSprite(AllegroSprite * sprite);
 	//void addZombie(Zombie* zombie_);
 
-	bool run(AllegroEvent ev, AllegroWindow& window);
+	gameState run(AllegroEvent ev, AllegroWindow& window);
+	void restart();
 
 	void randomlyGenerateZombies();
 
 private:
-	void update();
+	gameState update();
 	AllegroSprite* stageSprite;
 	unsigned radius;
 	unsigned centerX;

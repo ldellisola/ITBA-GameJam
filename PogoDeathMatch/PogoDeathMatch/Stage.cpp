@@ -40,14 +40,15 @@ void Stage::loadZombieSprite(AllegroSprite * sprite)
 
 
 
-bool Stage::run(AllegroEvent ev, AllegroWindow& window)
+gameState Stage::run(AllegroEvent ev, AllegroWindow& window)
 {
 
-	bool isPlaying = true;
+	gameState currentState = gameState::PLAYING;
+
 	switch (ev.getType())
 	{
 	case EventType::DisplayClose:
-		return true;
+		return gameState::QUIT;
 	case EventType::KeyDown:
 		switch (ev.getValue())
 		{
@@ -62,7 +63,7 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			break;
 			break;
 		case ALLEGRO_KEY_Q:
-			isPlaying = false;
+			currentState = gameState::PAUSE;
 			break;
 	}
 	break;
@@ -88,6 +89,7 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		for (int i = 0; i < this->zombies.size(); i++) {
 			this->player->hit(zombies[i]);
 		}
+		
 		this->player->update();
 
 		for (int i = 0; i < this->zombies.size(); i++) {
@@ -96,7 +98,8 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
-		this->update();
+		
+		currentState = this->update();
 
 		if (this->zombies.size() < this->maxZombies) {
 			this->randomlyGenerateZombies();
@@ -114,22 +117,44 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		break;
 	}
 
-	return isPlaying;
+	return currentState;
 }
-void Stage::update() {
 
+
+gameState Stage::update() {
+
+	gameState currentState = gameState::PLAYING;
 
 	float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
 
 	if (playerNormal > (DisplaySquare / 2)) {
 
-		for (Zombie *) in (this->zombies)
+		for (int i = 0; i < this->zombies.size(); i++)
+			zombies.erase(zombies.begin() + i);
 
-		return GAME_OVER;
+		return gameState::GAME_OVER;
+	}
+	else {
+		std::vector<int> zombiesToKill;
+
+		float zombieNormal;
+
+		for (int i = this->zombies.size()-1; i >=0 ; i--) {
+			zombieNormal = sqrt(pow(this->zombies[i]->getX() - (DisplaySquare / 2), 2.0) + pow(this->zombies[i]->getY() - (DisplaySquare / 2), 2.0));
+
+
+			if (zombieNormal > (DisplaySquare / 2)) {
+				delete this->zombies[i];
+				zombiesToKill.push_back(i);
+			}
 		}
 
-
+		for (int i = 0; i < zombiesToKill.size(); i++)
+			zombies.erase(zombies.begin() + zombiesToKill[i]);
+		
 	}
+
+	return currentState;
 }
 
 void Stage::randomlyGenerateZombies()
@@ -153,4 +178,17 @@ bool intersects(Player * player, int x, int y) {
 		if (player->getY() - player->getR() / 2.0 <= y && y <= player->getY() + 2 * player->getR())
 			return false;
 	return true;
+}
+
+void Stage::restart() {
+
+	this->player->setCoords(DisplaySquare / 2, DisplaySquare / 2);
+	this->player->setMoving(false);
+	this->player->setRotation(Rotation::Left, false);
+	this->player->setRotation(Rotation::Right, false);
+	
+	for (int i = 0; i < this->zombies.size(); i++)
+		zombies.erase(zombies.begin() + i);
+
+
 }

@@ -20,6 +20,7 @@ public:
 	void setRotation(Rotation rot,bool on);
 	void rotateLeft();
 	void rotateRight();
+	void setCoords(float coordX, float coordY);
 private:
 	bool left = false;
 	bool right = false;
