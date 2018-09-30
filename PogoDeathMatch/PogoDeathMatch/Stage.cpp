@@ -166,7 +166,7 @@ void Stage::randomlyGenerateZombies()
 {
 	int prob = rand() % 700;
 	int x, y;
-
+	static int i = 0;
 
 	if (prob < 100) {
 		do {
@@ -174,15 +174,22 @@ void Stage::randomlyGenerateZombies()
 		y = (rand() % (this->radius * 2));
 	} while (!intersects(player, this, x, y));
 
-	if (prob == 0)
-		this->zombies.push_back(new BossZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->bossZombieSprite, x, y,200));
-	else if (prob < 10)
+	if (prob == 0 && i > 40) {
+		this->zombies.push_back(new BossZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->bossZombieSprite, x, y, 200));
+		++i;
+	}
+	else if (prob < 10 && i>30) {
 		this->zombies.push_back(new FatZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fatZombieSprite, x, y, 200));
-	else if (prob <25)
+		++i;
+	}
+	else if (prob < 25&& i>10) {
 		this->zombies.push_back(new FastZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fastZombieSprite, x, y, 200));
-	else if (prob < 50)
+		++i;
+	}
+	else {
 		this->zombies.push_back(new SlowZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->slowZombieSprite, x, y, 200));
-
+		++i;
+	}
 	}
 }
 
