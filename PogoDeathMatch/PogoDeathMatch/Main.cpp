@@ -10,7 +10,7 @@
 
 
 int main(void) {
-
+	srand(time(nullptr));
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
 	AllegroWindow window(DisplaySquare, DisplaySquare, allegro.getEventQueue(), "Albondicats");
 	window.open();
@@ -29,7 +29,9 @@ int main(void) {
 
 
 	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
+
 	Player player(playerjump, nullptr, &playerSprite, DisplaySquare / 2.0, DisplaySquare / 2.0);
+
 
 	stage.addPlayer(&player);
 	stage.loadSoundFactory(&soundF);
@@ -64,6 +66,7 @@ int main(void) {
 
 					stage.restart();
 
+
 				isFirstTime = false;
 				currentState = gameState::PLAYING;
 
@@ -87,6 +90,7 @@ int main(void) {
 		}
 
 		if (currentState == gameState::GAME_OVER) {
+
 
 			//Stage.gameOver();
 			currentState == gameState::PAUSE;

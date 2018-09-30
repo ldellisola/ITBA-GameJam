@@ -13,7 +13,7 @@ public:
 
 	void draw();
 	void playJumpSound();
-	void playHitSound();
+	void playDeathSound();
 	virtual void update();
 	bool hit(BaseCharacter * other);
 	void applyForce(float force);
@@ -39,7 +39,7 @@ private:
 
 	AllegroSprite * sprite = nullptr;
 	AllegroSound * jumpSound = nullptr;
-	AllegroSound * hitSound = nullptr;
+	AllegroSound * deathSound = nullptr;
 
 };
 

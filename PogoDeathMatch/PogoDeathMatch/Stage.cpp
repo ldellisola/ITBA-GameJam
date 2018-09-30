@@ -1,8 +1,7 @@
 #include "Stage.h"
 #include "Front.h"
 
-bool intersects(Player * player, int x, int y);
-
+bool intersects(Player * player, Stage*stage, int x, int y);
 
 Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, unsigned centerY_)
 {
@@ -94,7 +93,6 @@ gameState Stage::run(AllegroEvent ev, AllegroWindow& window)
 
 		for (int i = 0; i < this->zombies.size(); i++) {
 
-		//	this->zombies[i]->hit(player);
 			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
@@ -127,7 +125,9 @@ gameState Stage::update() {
 
 	float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
 
+
 	if (playerNormal > (DisplaySquare / 2)) {
+
 
 		for (int i = 0; i < this->zombies.size(); i++)
 			zombies.erase(zombies.begin() + i);
@@ -142,7 +142,6 @@ gameState Stage::update() {
 		for (int i = this->zombies.size()-1; i >=0 ; i--) {
 			zombieNormal = sqrt(pow(this->zombies[i]->getX() - (DisplaySquare / 2), 2.0) + pow(this->zombies[i]->getY() - (DisplaySquare / 2), 2.0));
 
-
 			if (zombieNormal > (DisplaySquare / 2)) {
 				delete this->zombies[i];
 				zombiesToKill.push_back(i);
@@ -155,6 +154,7 @@ gameState Stage::update() {
 	}
 
 	return currentState;
+
 }
 
 void Stage::randomlyGenerateZombies()
@@ -165,17 +165,16 @@ void Stage::randomlyGenerateZombies()
 
 	if (prob == 0) {
 		do {
-			x = this->centerX + (rand() % (this->radius)) - this->radius / 2.0;
-			y = this->centerY + (rand() % (this->radius)) - this->radius / 2.0;
-		} while (!intersects(player, x, y));
+			x = (rand() % (this->radius*2)) ;
+			y = (rand() % (this->radius*2)) ;
+		} while (!intersects(player,this, x, y));
 		this->zombies.push_back(new Zombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->zombieSprite, x, y));
 	}
 }
 
 
-bool intersects(Player * player, int x, int y) {
-	if (player->getX() - player->getR() / 2.0 <= x && x <= player->getX() + 2 * player->getR())
-		if (player->getY() - player->getR() / 2.0 <= y && y <= player->getY() + 2 * player->getR())
+bool intersects(Player * player,Stage*stage,  int x, int y) {
+	if (hypotf(player->getX()-x,player->getY() - y)>2 * player->getR() && hypotf(stage->getX() - x,stage->getY() - y ) <stage->getR())
 			return false;
 	return true;
 }

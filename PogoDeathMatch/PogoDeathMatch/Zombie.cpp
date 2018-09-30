@@ -6,15 +6,25 @@ float variateAngle(float angle);
 
 #define Radius (charSquare)
 
+#ifdef OtherDisplay
+#define Force (1)
+#define Speed (1)
+#endif
+#ifdef AlanDisplay
 #define Force (50)
-#define Mass (10)
 #define Speed (10)
+#endif 
+
+
+
+#define Mass (10)
+
 #define Damp (1)
 #define SizeCoef (7)
 
 
-Zombie::Zombie(AllegroSound *jump,AllegroSound * hit,AllegroSprite * sprite,float x, float y)
-:BaseCharacter(jump,hit,sprite,x,y,Force,Mass,Speed,Radius,Damp,SizeCoef)
+Zombie::Zombie(AllegroSound *jump,AllegroSound * death,AllegroSprite * sprite,float x, float y)
+:BaseCharacter(jump,death,sprite,x,y,Force,Mass,Speed,Radius,Damp,SizeCoef)
 {
 	this->x = x;
 	this->y = y;
@@ -27,6 +37,7 @@ Zombie::~Zombie()
 
 void Zombie::update()
 {
+	this->moving;
 	this->angle = directions.front();
 
 	this->updateTick();

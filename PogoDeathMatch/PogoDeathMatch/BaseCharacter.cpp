@@ -11,7 +11,7 @@ BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSpr
 
 	this->angle = 0;
 	this->jumpSound = jump;
-	this->hitSound = hit;
+	this->deathSound = hit;
 	this->sprite = sprite;
 
 
@@ -30,7 +30,9 @@ void BaseCharacter::draw()
 	this->radius = this->baseRadius + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
 	this->sprite->setDimensions(2*this->radius, 2*this->radius);
+
 	this->sprite->setAngle(90 + this->angle * 180.0/PI );
+
 
 	this->sprite->draw(this->x, this->y);
 }
@@ -40,9 +42,9 @@ void BaseCharacter::playJumpSound()
 	this->jumpSound->play();
 }
 
-void BaseCharacter::playHitSound()
+void BaseCharacter::playDeathSound()
 {
-	this->hitSound->play();
+	this->deathSound->play();
 }
 
 void BaseCharacter::update()
@@ -65,12 +67,13 @@ bool BaseCharacter::hit(BaseCharacter * other)
 {
 
 	if (sqrtf(powf(other->x - this->x, 2) + powf(other->y - this->y, 2)) <= other->baseRadius + this->baseRadius) {
-		std::cout << "Bot angle:" << other->angle << " -- Me angle " << this->angle << std::endl;
-			other->forceAngle = -((this->angle - other->angle)/2.0 - PI/2.0);
+		if (this->moving) {
+			other->forceAngle = this->angle;
 			other->applyForce(this->force);
-			this->forceAngle = ((this->angle - other->angle)/2.0 + PI / 2.0);
-			this->applyForce(other->force);
-		std::cout << "Bot forceAangle:" << other->forceAngle << " -- Me forceAangle " << this->forceAngle << std::endl;
+		}
+		this->forceAngle = other->angle;
+		this->applyForce(other->force);
+
 	}
 
 	return false;
