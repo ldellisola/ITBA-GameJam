@@ -224,6 +224,10 @@
     <Image Include="PogoDeathmatch1.png" />
     <Image Include="StageSprite.png" />
     <Image Include="zombieSprite.png" />
+    <Image Include="ZombieSprite2.png" />
+    <Image Include="zombie_boss.png" />
+    <Image Include="zombie_fat.png" />
+    <Image Include="zombie_flash.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="UbuntuMono-R.ttf" />

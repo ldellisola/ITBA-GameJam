@@ -211,6 +211,18 @@
     <Image Include="examplebutton1.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="zombie_boss.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="zombie_fat.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="zombie_flash.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ZombieSprite2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="UbuntuMono-R.ttf">
