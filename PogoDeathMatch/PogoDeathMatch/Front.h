@@ -47,6 +47,7 @@ enum buttonVal
 	PLAY,
 	CONTINUE,
 	EXIT,
+	INSTRUCTIONS,
 	NONE
 };
 

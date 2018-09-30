@@ -18,5 +18,9 @@ int Menu::checkForPress(float mouseX, float mouseY, double timeStamp)
 		button = buttonVal::EXIT;
 	}
 
+	if (((AllegroButton*) boxes [INSTRUCTIONS_ID])->click(mouseX, mouseY, timeStamp)) {
+		button = buttonVal::INSTRUCTIONS;
+	}
+
 	return button;
 }
