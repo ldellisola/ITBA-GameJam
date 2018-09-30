@@ -21,6 +21,7 @@ public:
 	bool run(AllegroEvent ev, AllegroWindow& window);
 
 private:
+	void update();
 	AllegroSprite* stageSprite;
 	unsigned radius;
 	unsigned centerX;

@@ -28,9 +28,9 @@ int main(void) {
 	AllegroSoundFactory soundF;
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
-	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
-	Player player(playerjump, nullptr, &playerSprite, 200, 200);
-	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
+	Stage stage(&stageSprite, DisplaySquare/2.0, DisplaySquare/2.0, 600/2.0);
+	Player player(playerjump, nullptr, &playerSprite, DisplaySquare/2, DisplaySquare/2);
+	Zombie zombie(nullptr, nullptr, &zombieSprite, DisplaySquare/5, DisplaySquare/5);
 
 	stage.addZombie(&zombie);
 	stage.addPlayer(&player);
@@ -42,7 +42,9 @@ int main(void) {
 
 	AllegroEvent alEv(EventType::Empty, 0);
 
+	bool isFirstTime = true;
 	bool leave = false;
+
 	do {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
@@ -53,18 +55,29 @@ int main(void) {
 
 			if (alEv.getType() == EventType::MouseDown) {
 				switch (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp())) {
+
 				case EXIT: leave = true;
 					break;
+
 				case PLAY:
-					do {
-						eventHandler.getEvent();
-						if (eventHandler.isThereEvent()) {
 
-							leave = stage.run(eventHandler.ObtainEvent(), window);
-						}
+					Stage.restart();
 
-					} while (!leave);
-					break;
+					bool isFirstTime = false;
+					bool isPlaying = true;
+
+				case CONTINUE:
+
+					if (!isFirstTime) {
+						do {
+							eventHandler.getEvent();
+							if (eventHandler.isThereEvent()) {
+								isPlaying = stage.run(eventHandler.ObtainEvent(), window);
+							}
+
+						} while (isPlaying);
+						break;
+					}
 				}
 			}
 			else if (alEv.getType() == EventType::DisplayClose)

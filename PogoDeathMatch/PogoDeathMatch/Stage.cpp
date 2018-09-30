@@ -1,5 +1,5 @@
 #include "Stage.h"
-
+#include "Front.h"
 
 
 Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, unsigned centerY_)
@@ -33,6 +33,8 @@ void Stage::addZombie(Zombie * zombie_)
 
 bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 {
+
+	bool isPlaying = true;
 	switch (ev.getType())
 	{
 	case EventType::DisplayClose:
@@ -49,8 +51,12 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		case ALLEGRO_KEY_D:
 			this->player->setRotation(Rotation::Right,true);
 			break;
-		}
-		break;
+			break;
+		case ALLEGRO_KEY_Q:
+			isPlaying = false;
+			break;
+	}
+	break;
 	case EventType::KeyUp:
 
 		switch (ev.getValue())
@@ -82,6 +88,8 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->zombies[i]->update();
 		}
 
+		this->update();
+
 		this->draw();
 		this->player->draw();
 		for (int i = 0; i < this->zombies.size(); i++)
@@ -93,5 +101,25 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		break;
 	}
 
-	return false;
+	return isPlaying;
+}
+
+void Stage::update() {
+
+
+	float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
+
+	if (playerNormal > (DisplaySquare / 2) ){
+
+	//	for enemy  this->
+	//	return GAME_OVER;
+	//}
+
+
+
+
+		
+		
+		
+		
 }
