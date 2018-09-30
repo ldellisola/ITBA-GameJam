@@ -123,9 +123,10 @@ void Stage::update() {
 
 	if (playerNormal > (DisplaySquare / 2)) {
 
-		//	for enemy  this->
-		//	return GAME_OVER;
-		//}
+		for (Zombie *) in (this->zombies)
+
+		return GAME_OVER;
+		}
 
 
 	}
