@@ -148,6 +148,7 @@ gameState Stage::update() {
 			zombieNormal = sqrt(pow(this->zombies[i]->getX() - (DisplaySquare / 2), 2.0) + pow(this->zombies[i]->getY() - (DisplaySquare / 2), 2.0));
 
 			if (zombieNormal > (DisplaySquare / 2)) {
+				this->score += zombies[i]->givePoints();
 				delete this->zombies[i];
 				zombiesToKill.push_back(i);
 			}
