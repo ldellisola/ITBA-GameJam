@@ -29,11 +29,12 @@ int Menu::checkForPress(float mouseX, float mouseY, double timeStamp)
 	return button;
 }
 
-void Menu::runCredits(AllegroWindow * window, AllegroEventHandler & eventHandler)
+bool Menu::runCredits(AllegroWindow * window, AllegroEventHandler & eventHandler)
 {
 	window->deleteLayout();
 	window->insertLayout(credits);
 	bool leave = false;
+	bool kill = false;
 
 	while (!leave) {
 		eventHandler.getEvent();
@@ -46,18 +47,23 @@ void Menu::runCredits(AllegroWindow * window, AllegroEventHandler & eventHandler
 			}
 			else if (ev.getType() == EventType::Timer)
 				window->update();
-			
+			else if (ev.getType() == EventType::DisplayClose) {
+				kill = true;
+				leave = true;
+			}
+
 		}
 	}
-	
+	return kill;
 }
 
-void Menu::runInstructions(AllegroWindow * window, AllegroEventHandler & eventHandler)
+bool Menu::runInstructions(AllegroWindow * window, AllegroEventHandler & eventHandler)
 {
 
 	window->deleteLayout();
 	window->insertLayout(instructions);
 	bool leave = false;
+	bool kill = false;
 
 	while (!leave) {
 		eventHandler.getEvent();
@@ -70,7 +76,12 @@ void Menu::runInstructions(AllegroWindow * window, AllegroEventHandler & eventHa
 			}
 			else if (ev.getType() == EventType::Timer)
 				window->update();
+			else if (ev.getType() == EventType::DisplayClose) {
+				kill = true;
+				leave = true;
+			}
 
 		}
 	}
+	return kill;
 }

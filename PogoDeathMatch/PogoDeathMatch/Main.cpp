@@ -49,6 +49,11 @@ int main(void) {
 
 	gameState currentState = gameState::PAUSE;
 
+
+	
+
+
+
 	menuMusic->play();
 
 	do {
@@ -60,9 +65,10 @@ int main(void) {
 			
 
 			if (currentState == gameState::GAME_OVER) {
-				gameOverMusic->stop();
+				
 				if (alEv.getType() == EventType::KeyDown) {
 					currentState = gameState::PAUSE;
+					gameOverMusic->stop();
 					menuMusic->play();
 					window.deleteLayout();
 					window.insertLayout(mainMenu.getLayout());
@@ -72,12 +78,12 @@ int main(void) {
 			if (alEv.getType() == EventType::MouseDown) {
 				switch (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp())) {
 				case INSTRUCTIONS:
-					mainMenu.runInstructions(&window,eventHandler);
+					leave = mainMenu.runInstructions(&window,eventHandler);
 					window.deleteLayout();
 					window.insertLayout(mainMenu.getLayout());
 					break;
 				case CREDITS:
-					mainMenu.runCredits(&window, eventHandler);
+					leave = mainMenu.runCredits(&window, eventHandler);
 					window.deleteLayout();
 					window.insertLayout(mainMenu.getLayout());
 					break;

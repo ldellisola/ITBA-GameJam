@@ -169,9 +169,9 @@ public:
 
 	int checkForPress(float mouseX, float mouseY, double timeStamp);
 
-	void runCredits(AllegroWindow* window, AllegroEventHandler & eventHandler);
+	bool runCredits(AllegroWindow* window, AllegroEventHandler & eventHandler);
 
-	void runInstructions(AllegroWindow* window, AllegroEventHandler & eventHandler);
+	bool runInstructions(AllegroWindow* window, AllegroEventHandler & eventHandler);
 
 private:
 
