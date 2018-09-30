@@ -44,6 +44,8 @@ private:
 	Player* player;
 	std::vector<Zombie*> zombies;
 	unsigned int maxZombies = 5;
+
+	unsigned int zombiesSpawned = 0;
 	
 	AllegroSoundFactory * soundFactory = nullptr;
 	AllegroSprite * slowZombieSprite = nullptr;
