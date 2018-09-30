@@ -21,7 +21,6 @@ public:
 	void rotateLeft();
 	void rotateRight();
 private:
-	bool moving;
 	bool left = false;
 	bool right = false;
 };

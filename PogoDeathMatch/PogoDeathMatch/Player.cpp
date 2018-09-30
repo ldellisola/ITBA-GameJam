@@ -2,8 +2,8 @@
 #include "Front.h"
 #include <math.h>
 
-#define Force (1)
-#define Mass (1)
+#define Force (20)
+#define Mass (10)
 #define Speed (20)
 #define Radius (charSquare)
 #define Damp (1)
@@ -57,7 +57,7 @@ void Player::setRotation(Rotation rot, bool on)
 		this->left = on;
 	else
 		this->right = on;
-	
+
 }
 
 void Player::rotateLeft()

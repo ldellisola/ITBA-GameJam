@@ -57,8 +57,8 @@ void BaseCharacter::update()
 	}
 	else {
 		// Solo se mueve en la direccion que lo empujaron
-		this->x += cosf(this->angle) * (baseSpeed + appliedForce);
-		this->y += sinf(this->angle) * (baseSpeed + appliedForce);
+		this->x += cosf(this->forceAngle) * (baseSpeed + appliedForce);
+		this->y += sinf(this->forceAngle) * (baseSpeed + appliedForce);
 	}
 	this->DamperForce();
 }
@@ -68,13 +68,10 @@ void BaseCharacter::update()
 bool BaseCharacter::hit(BaseCharacter * other)
 {
 
-	if (other->x - this->x <= other->radius + this->radius) {
-		if (other->y - this-> y <= other->radius + this->radius) {
-			if ((sqrtf(powf(this->angle - other->angle, 2)) >= 0) && (sqrtf(powf(this->angle - other->angle, 2)) <= PI / 2.0)) {
-				other->angle = this->angle;
-				other->applyForce(this->force);
-				return true;
-			}
+	if (sqrtf(powf(other->x - this->x, 2) + powf(other->y - this->y, 2)) <= other->baseRadius + this->baseRadius) {
+		if ((sqrtf(powf(this->angle - other->angle, 2)) >= 0) && (sqrtf(powf(this->angle - other->angle, 2)) <= PI / 2.0)) {
+			other->forceAngle = this->angle;
+			other->applyForce(this->force);
 		}
 	}
 
@@ -83,13 +80,18 @@ bool BaseCharacter::hit(BaseCharacter * other)
 
 void BaseCharacter::applyForce(float force)
 {
-	this->appliedForce = -force;
+	this->moving = true;
+	this->appliedForce = force;
 }
 
 void BaseCharacter::DamperForce()
 {
-	if (this->appliedForce < 0) {
-		this->appliedForce += this->mass *dampCoef;
+	if (this->appliedForce > 0) {
+		this->appliedForce -= this->mass *dampCoef;
+		if (appliedForce <= 0) {
+			this->moving = false;
+			this->appliedForce = 0;
+		}
 	}
 	else {
 		this->appliedForce = 0;
