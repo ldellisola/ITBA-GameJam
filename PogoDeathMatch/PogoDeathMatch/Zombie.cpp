@@ -8,13 +8,13 @@ float variateAngle(float angle);
 
 #define Force (20)
 #define Mass (10)
-#define Speed (5)
+#define Speed (3)
 #define Damp (1)
 #define SizeCoef (7)
 
 
-Zombie::Zombie(AllegroSound *jump,AllegroSound * hit,AllegroSprite * sprite,float x, float y)
-:BaseCharacter(jump,hit,sprite,x,y,Force,Mass,Speed,Radius,Damp,SizeCoef)
+Zombie::Zombie(AllegroSound *jump,AllegroSound * death,AllegroSprite * sprite,float x, float y)
+:BaseCharacter(jump,death,sprite,x,y,Force,Mass,Speed,Radius,Damp,SizeCoef)
 {
 	this->x = x;
 	this->y = y;
@@ -28,6 +28,7 @@ Zombie::~Zombie()
 
 void Zombie::update()
 {
+	this->moving;
 	this->angle = directions.front();
 
 	this->updateTick();

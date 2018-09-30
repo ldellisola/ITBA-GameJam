@@ -2,16 +2,16 @@
 #include "Front.h"
 #include <math.h>
 
-#define Force (20)
+#define Force (40)
 #define Mass (10)
-#define Speed (20)
+#define Speed (5)
 #define Radius (charSquare)
 #define Damp (1)
 #define SizeCoef (7)
 
 
-Player::Player(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y)
-	: BaseCharacter(jump, hit, sprite, x, y, Force, Mass, Speed, Radius, Damp, SizeCoef)
+Player::Player(AllegroSound * jump, AllegroSound * death, AllegroSprite * sprite, float x, float y)
+	: BaseCharacter(jump, death, sprite, x, y, Force, Mass, Speed, Radius, Damp, SizeCoef)
 {
 	this->x = x;
 	this->y = y;

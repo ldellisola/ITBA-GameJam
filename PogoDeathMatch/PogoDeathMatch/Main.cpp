@@ -31,8 +31,10 @@ int main(void) {
 	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
 	Player player(playerjump, nullptr, &playerSprite, 200, 200);
 	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
+	Zombie zombie1(nullptr, nullptr, &zombieSprite, 100, 100);
 
 	stage.addZombie(&zombie);
+	stage.addZombie(&zombie1);
 	stage.addPlayer(&player);
 
 	// UI
