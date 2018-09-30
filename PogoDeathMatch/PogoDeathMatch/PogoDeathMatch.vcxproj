@@ -221,6 +221,8 @@
     <Font Include="UbuntuMono-R.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Game Over.ogg" />
+    <None Include="Menu.ogg" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

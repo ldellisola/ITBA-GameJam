@@ -23,8 +23,9 @@ float variateAngle(float angle);
 #define SizeCoef (7)
 
 
-Zombie::Zombie(AllegroSound *jump,AllegroSound * death,AllegroSprite * sprite,float x, float y)
-:BaseCharacter(jump,death,sprite,x,y,Force,Mass,Speed,Radius,Damp,SizeCoef)
+Zombie::Zombie(AllegroSound *jump,AllegroSound * death,AllegroSprite * sprite,float x, float y,
+	float force,float mass, float speed, float radius,float damp,float sizeCoef)
+:BaseCharacter(jump,death,sprite,x,y, force, mass, speed, radius, damp, sizeCoef)
 {
 	this->x = x;
 	this->y = y;

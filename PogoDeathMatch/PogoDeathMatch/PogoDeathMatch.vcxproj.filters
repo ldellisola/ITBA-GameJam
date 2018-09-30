@@ -189,6 +189,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Game Over.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Menu.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Media Include="GameMusic.mp3">

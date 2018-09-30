@@ -38,8 +38,6 @@ int main(void) {
 	stage.loadSoundFactory(&soundF);
 	stage.loadZombieSprite(&zombieSprite);
 
-	// UI
-
 	Menu mainMenu;
 	window.insertLayout(mainMenu.getLayout());
 
@@ -70,8 +68,8 @@ int main(void) {
 					stage.restart();
 
 
-				isFirstTime = false;
-				currentState = gameState::PLAYING;
+					isFirstTime = false;
+					currentState = gameState::PLAYING;
 
 				case CONTINUE:
 
