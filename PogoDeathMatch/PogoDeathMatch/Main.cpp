@@ -36,7 +36,6 @@ int main(void) {
 
 	stage.addPlayer(&player);
 	stage.loadSoundFactory(&soundF);
-	//stage.loadZombieSprite(&zombieSprite);
 
 	Menu mainMenu;
 	window.insertLayout(mainMenu.getLayout());
@@ -48,7 +47,7 @@ int main(void) {
 
 	gameState currentState = gameState::PAUSE;
 
-
+	menuMusic->play();
 	do {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
@@ -64,7 +63,7 @@ int main(void) {
 					break;
 
 				case PLAY:
-
+					menuMusic->stop();
 					stage.restart();
 
 
@@ -81,6 +80,7 @@ int main(void) {
 							}
 
 						} while (currentState == gameState::PLAYING);
+						menuMusic->play();
 						break;
 					}
 				}
@@ -91,7 +91,7 @@ int main(void) {
 		}
 
 		if (currentState == gameState::GAME_OVER) {
-
+			menuMusic->stop();
 
 			//Stage.gameOver();
 			currentState == gameState::PAUSE;
