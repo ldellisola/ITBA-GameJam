@@ -6,9 +6,9 @@ float variateAngle(float angle);
 
 #define Radius (charSquare)
 
-#define Force (20)
+#define Force (50)
 #define Mass (10)
-#define Speed (5)
+#define Speed (10)
 #define Damp (1)
 #define SizeCoef (7)
 
@@ -18,7 +18,6 @@ Zombie::Zombie(AllegroSound *jump,AllegroSound * hit,AllegroSprite * sprite,floa
 {
 	this->x = x;
 	this->y = y;
-	this->angle = 0;
 }
 
 
