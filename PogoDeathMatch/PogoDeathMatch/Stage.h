@@ -35,6 +35,8 @@ public:
 
 	void randomlyGenerateZombies();
 
+	unsigned score;
+
 private:
 	gameState update();
 	AllegroSprite* stageSprite;
