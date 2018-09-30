@@ -2,9 +2,9 @@
 
 
 
-#define BossForce (10)
-#define BossMass (15)
-#define BossSpeed (3)
+#define BossForce (20)
+#define BossMass (50)
+#define BossSpeed (4)
 #define BossDamp (2)
 #define BossSizeCoef (15)
 #define BossPoints (100)

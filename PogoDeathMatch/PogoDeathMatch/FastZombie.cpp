@@ -2,11 +2,11 @@
 
 
 
-#define FastForce (2)
+#define FastForce (5)
 #define FastMass (10)
-#define FastSpeed (5)
-#define FastDamp (0)
-#define FastSizeCoef (0)
+#define FastSpeed (10)
+#define FastDamp (1)
+#define FastSizeCoef (5)
 #define FastPoints (20)
 
 

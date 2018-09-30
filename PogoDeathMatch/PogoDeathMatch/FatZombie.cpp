@@ -2,11 +2,11 @@
 
 
 
-#define FatForce (4)
-#define FatMass (40)
-#define FatSpeed (0.5)
+#define FatForce (10)
+#define FatMass (50)
+#define FatSpeed (1)
 #define FatDamp (1)
-#define FatSizeCoef (2)
+#define FatSizeCoef (10)
 #define FatPoints (50)
 
 FatZombie::FatZombie(AllegroSound * jump, AllegroSound * death, AllegroSprite * sprite, float x, float y, float radius)
