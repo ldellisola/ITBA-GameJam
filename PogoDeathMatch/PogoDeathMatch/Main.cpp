@@ -27,14 +27,9 @@ int main(void) {
 	AllegroSoundFactory soundF;
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
-<<<<<<< HEAD
-	Stage stage(&stageSprite, DisplaySquare/2.0, DisplaySquare/2.0, 600/2.0);
-	Player player(playerjump, nullptr, &playerSprite, DisplaySquare/2, DisplaySquare/2);
-	Zombie zombie(nullptr, nullptr, &zombieSprite, DisplaySquare/5, DisplaySquare/5);
-=======
+
 	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
 	Player player(playerjump, nullptr, &playerSprite, DisplaySquare / 2.0, DisplaySquare / 2.0);
->>>>>>> 9c0f6d0460372e76a03753b4c8604634b2ecca41
 
 	stage.addPlayer(&player);
 	stage.loadSoundFactory(&soundF);
@@ -49,6 +44,7 @@ int main(void) {
 
 	bool isFirstTime = true;
 	bool leave = false;
+	bool isPlaying = true;
 
 	do {
 		eventHandler.getEvent();
@@ -66,10 +62,10 @@ int main(void) {
 
 				case PLAY:
 
-					Stage.restart();
+					//Stage.restart();
 
-					bool isFirstTime = false;
-					bool isPlaying = true;
+				isFirstTime = false;
+				isPlaying = true;
 
 				case CONTINUE:
 

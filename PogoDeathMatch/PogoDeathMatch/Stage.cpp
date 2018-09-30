@@ -96,17 +96,13 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
-
-<<<<<<< HEAD
 		this->update();
 
-=======
 		if (this->zombies.size() < this->maxZombies) {
 			this->randomlyGenerateZombies();
 		}
 
 		al_clear_to_color(al_color_name("hotpink"));
->>>>>>> 9c0f6d0460372e76a03753b4c8604634b2ecca41
 		this->draw();
 		this->player->draw();
 		for (int i = 0; i < this->zombies.size(); i++)
@@ -120,27 +116,21 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 
 	return isPlaying;
 }
-
-<<<<<<< HEAD
 void Stage::update() {
 
 
 	float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
 
-	if (playerNormal > (DisplaySquare / 2) ){
+	if (playerNormal > (DisplaySquare / 2)) {
 
-	//	for enemy  this->
-	//	return GAME_OVER;
-	//}
-
-
+		//	for enemy  this->
+		//	return GAME_OVER;
+		//}
 
 
-		
-		
-		
-		
-=======
+	}
+}
+
 void Stage::randomlyGenerateZombies()
 {
 	int prob = rand() % 100;
@@ -162,5 +152,4 @@ bool intersects(Player * player, int x, int y) {
 		if (player->getY() - player->getR() / 2.0 <= y && y <= player->getY() + 2 * player->getR())
 			return false;
 	return true;
->>>>>>> 9c0f6d0460372e76a03753b4c8604634b2ecca41
 }
