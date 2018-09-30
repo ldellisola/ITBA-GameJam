@@ -5,23 +5,16 @@ int Menu::checkForPress(float mouseX, float mouseY, double timeStamp)
 
 	buttonVal button = buttonVal::NONE;
 
-	((AllegroToggle*) boxes[PLAY_ID])->toggle(mouseX, mouseY, timeStamp);
-
-	if ( ( (AllegroToggle*) boxes[PLAY_ID])->isPressed() ) {
+	if (((AllegroButton*)boxes[PLAY_ID])->click(mouseX, mouseY, timeStamp)) {
 		button = buttonVal::PLAY;
 	}
 
 
-	((AllegroToggle*) boxes[CONT_ID])->toggle(mouseX, mouseY, timeStamp);
-
-	if (((AllegroToggle*) boxes[CONT_ID])->isPressed()) {
+	if (((AllegroButton*) boxes[CONT_ID])->click(mouseX, mouseY, timeStamp)) {
 		button = buttonVal::CONTINUE;
 	}
 
-
-	((AllegroToggle*) boxes[EXIT_ID])->toggle(mouseX, mouseY, timeStamp);
-
-	if (((AllegroToggle*) boxes [EXIT_ID])->isPressed()) {
+	if (((AllegroButton*) boxes [EXIT_ID])->click(mouseX, mouseY, timeStamp)) {
 		button = buttonVal::EXIT;
 	}
 
