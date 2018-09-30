@@ -22,15 +22,16 @@ public:
 	float getY() { return y; }
 
 protected:
+	bool moving;
 	float x, y, radius;
-	float angle,speed;
+	float angle,speed, forceAngle;
 	const float force, mass, baseSpeed, baseRadius, dampCoef, sizeCoef;
 	void updateTick();
 private:
 
 	void DamperForce();
 	
-	const unsigned int maxTick = 400;
+	const unsigned int maxTick = 20;
 	float appliedForce = 0;
 
 	unsigned int tick =0;

@@ -2,9 +2,9 @@
 
 float variateAngle(float angle);
 
-#define Force (1)
-#define Mass (1)
-#define Speed (0.1)
+#define Force (20)
+#define Mass (10)
+#define Speed (5)
 #define Radius (25)
 #define Damp (1)
 #define SizeCoef (7)
@@ -36,7 +36,7 @@ void Zombie::update()
 
 void Zombie::calculateMovement(BaseCharacter * player)
 {
-	const float dt = 500;
+	const float dt = 10;
 	float difference;
 	if (directions.size() == 0) {
 		for (int j = 0; j < 3; j++) {
@@ -51,6 +51,6 @@ void Zombie::calculateMovement(BaseCharacter * player)
 
 
 float variateAngle(float angle) {
-	int var = (rand() % 100) - 50;
+	int var = (rand() % 80) - 40;
 	return (var / 180.0) * PI;
 }

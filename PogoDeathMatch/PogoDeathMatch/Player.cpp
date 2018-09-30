@@ -1,10 +1,10 @@
 #include "Player.h"
 #include <math.h>
 
-#define Force (1)
-#define Mass (1)
+#define Force (20)
+#define Mass (10)
 #define Speed (20)
-#define Radius (25)
+#define Radius (40)
 #define Damp (1)
 #define SizeCoef (7)
 
