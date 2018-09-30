@@ -81,7 +81,6 @@ bool BaseCharacter::hit(BaseCharacter * other)
 
 void BaseCharacter::applyForce(float force)
 {
-	this->moving = true;
 	this->appliedForce = force;
 }
 
@@ -90,7 +89,6 @@ void BaseCharacter::DamperForce()
 	if (this->appliedForce > 0) {
 		this->appliedForce -= this->mass *dampCoef;
 		if (appliedForce <= 0) {
-			this->moving = false;
 			this->appliedForce = 0;
 		}
 	}

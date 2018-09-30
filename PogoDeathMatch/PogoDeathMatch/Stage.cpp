@@ -84,16 +84,16 @@ gameState Stage::run(AllegroEvent ev, AllegroWindow& window)
 		case ALLEGRO_KEY_D:
 			this->player->setRotation(Rotation::Right,false);
 			break;
-			
+
 		}
 		break;
 
 	case EventType::Timer:
-	
+
 		for (int i = 0; i < this->zombies.size(); i++) {
 			this->player->hit(zombies[i]);
 		}
-		
+
 		this->player->update();
 
 		for (int i = 0; i < this->zombies.size(); i++) {
@@ -101,7 +101,7 @@ gameState Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
-		
+
 		currentState = this->update();
 
 		if (this->zombies.size() < this->maxZombies) {
@@ -155,7 +155,7 @@ gameState Stage::update() {
 
 		for (int i = 0; i < zombiesToKill.size(); i++)
 			zombies.erase(zombies.begin() + zombiesToKill[i]);
-		
+
 	}
 
 	return currentState;
@@ -206,7 +206,7 @@ void Stage::restart() {
 	this->player->setMoving(false);
 	this->player->setRotation(Rotation::Left, false);
 	this->player->setRotation(Rotation::Right, false);
-	
+
 	for (int i = 0; i < this->zombies.size(); i++)
 		zombies.erase(zombies.begin() + i);
 

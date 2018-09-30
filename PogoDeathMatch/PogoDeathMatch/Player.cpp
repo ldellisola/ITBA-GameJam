@@ -2,20 +2,9 @@
 #include "Front.h"
 #include <math.h>
 
-#ifdef OtherDisplay
-#define Force (50)
+#define Force (75)
 #define Speed (15)
-#endif
-#ifdef AlanDisplay
-#define Force (50)
-#define Speed (10)
-#endif 
-
-
-
-
 #define Mass (10)
-
 #define Radius (charSquare)
 #define Damp (1)
 #define SizeCoef (7)
@@ -41,7 +30,7 @@ void Player::update()
 	if (right)
 		this->rotateRight();
 
-	if (moving)
+	if (moving || this->appliedForce > 0)
 		BaseCharacter::update();
 
 
