@@ -240,6 +240,7 @@ void Stage::restart() {
 	this->zombiesSpawned = 0;
 	this->score = 1;
 
+
 	for (int i = 0; i < this->zombies.size(); i++)
 		zombies.erase(zombies.begin() + i);
 
