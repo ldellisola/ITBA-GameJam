@@ -15,7 +15,7 @@
 #define HEIGHT 600
 #define BUTTON_SIZE_H 100
 #define BUTTON_SIZE_W 300
-#define BUTTON_POS_Y 900
+#define BUTTON_POS_Y 500
 #define BUTTON_POS_X 100
 #define BUTTON_TAB 400
 

@@ -36,7 +36,7 @@ int main(void) {
 	// UI
 
 	Menu mainMenu;
-	window.insertLayout(*mainMenu.getLayout());
+	window.insertLayout(mainMenu.getLayout());
 
 	AllegroEvent alEv(EventType::Empty, 0);
 
