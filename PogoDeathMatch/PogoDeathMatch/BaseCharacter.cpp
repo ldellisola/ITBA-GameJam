@@ -33,7 +33,7 @@ void BaseCharacter::draw()
 	//this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
 	this->sprite->setDimensions(2*this->radius, 2*this->radius);
-	this->sprite->setAngle(this->angle * 180.0/PI );
+	this->sprite->setAngle(90 + this->angle * 180.0/PI );
 
 	this->sprite->draw(this->x, this->y);
 }
