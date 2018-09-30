@@ -1,4 +1,5 @@
 #include "Stage.h"
+#include <iostream>
 #include "Front.h"
 
 bool intersects(Player * player, Stage*stage, int x, int y);
@@ -148,6 +149,7 @@ gameState Stage::update() {
 			zombieNormal = sqrt(pow(this->zombies[i]->getX() - (DisplaySquare / 2), 2.0) + pow(this->zombies[i]->getY() - (DisplaySquare / 2), 2.0));
 
 			if (zombieNormal > (DisplaySquare / 2)) {
+				this->score += zombies[i]->givePoints();
 				delete this->zombies[i];
 				zombiesToKill.push_back(i);
 			}
@@ -164,31 +166,37 @@ gameState Stage::update() {
 
 void Stage::randomlyGenerateZombies()
 {
-	int prob = rand() % 700;
+	int base = maxZombies - this->zombies.size();
+	int prob = rand() % (int)(100000/ (1+base*base*base*base));
 	int x, y;
-	static int i = 0;
+	static int zombiesSpawned = 0;
 
-	if (prob < 100) {
-		do {
-		x = (rand() % (this->radius * 2));
-		y = (rand() % (this->radius * 2));
-	} while (!intersects(player, this, x, y));
+	if (prob < 50) {
 
-	if (prob == 0 && i > 40) {
-		this->zombies.push_back(new BossZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->bossZombieSprite, x, y, 200));
-		++i;
+	int index = (rand() % (5));
+	int pos[10] = { this->radius,this->radius,
+					this->radius,this->radius *1.5,
+					this->radius,this->radius * 0.5,
+					this->radius *0.5,this->radius,
+					this->radius * 1.5, this->radius };
+
+
+
+	if (prob == 0 && zombiesSpawned > 40) {
+		this->zombies.push_back(new BossZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->bossZombieSprite, pos[2 * index], pos[2 * index + 1], 200));
+		++zombiesSpawned;
 	}
-	else if (prob < 10 && i>30) {
-		this->zombies.push_back(new FatZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fatZombieSprite, x, y, 200));
-		++i;
+	else if (prob < 10 && zombiesSpawned>30) {
+		this->zombies.push_back(new FatZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fatZombieSprite, pos[2*index], pos[2 * index +1], 150));
+		++zombiesSpawned;
 	}
-	else if (prob < 25&& i>10) {
-		this->zombies.push_back(new FastZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fastZombieSprite, x, y, 200));
-		++i;
+	else if (prob < 25&& zombiesSpawned>10) {
+		this->zombies.push_back(new FastZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fastZombieSprite, pos[2 * index], pos[2 * index + 1], 50));
+		++zombiesSpawned;
 	}
 	else {
-		this->zombies.push_back(new SlowZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->slowZombieSprite, x, y, 200));
-		++i;
+		this->zombies.push_back(new SlowZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->slowZombieSprite, pos[2 * index], pos[2 * index + 1], 75));
+		++zombiesSpawned;
 	}
 	}
 }
@@ -206,6 +214,7 @@ void Stage::restart() {
 	this->player->setMoving(false);
 	this->player->setRotation(Rotation::Left, false);
 	this->player->setRotation(Rotation::Right, false);
+	this->zombiesSpawned = 0;
 
 	for (int i = 0; i < this->zombies.size(); i++)
 		zombies.erase(zombies.begin() + i);

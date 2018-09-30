@@ -33,7 +33,7 @@ private:
 
 	void DamperForce();
 	
-	const unsigned int maxTick = 20;
+	const unsigned int maxTick = 15;
 
 
 	unsigned int tick =0;
