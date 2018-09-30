@@ -133,7 +133,7 @@ void Stage::update() {
 
 void Stage::randomlyGenerateZombies()
 {
-	int prob = rand() % 100;
+	int prob = rand() % 500;
 	int x, y;
 
 
