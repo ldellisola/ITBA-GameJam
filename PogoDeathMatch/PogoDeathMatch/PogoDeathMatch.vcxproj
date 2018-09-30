@@ -181,9 +181,13 @@
     <ClCompile Include="Allegro\Allegro Wrapper\WrittenBox.cpp" />
     <ClCompile Include="Allegro\AllegroV2\AllegroClassV2.cpp" />
     <ClCompile Include="BaseCharacter.cpp" />
+    <ClCompile Include="BossZombie.cpp" />
+    <ClCompile Include="FastZombie.cpp" />
+    <ClCompile Include="FatZombie.cpp" />
     <ClCompile Include="Front.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SlowZombie.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
@@ -205,8 +209,12 @@
     <ClInclude Include="Allegro\AllegroV2\AllegroClassV2.h" />
     <ClInclude Include="Allegro\AllegroV2\AllegroFactory.h" />
     <ClInclude Include="BaseCharacter.h" />
+    <ClInclude Include="BossZombie.h" />
+    <ClInclude Include="FastZombie.h" />
+    <ClInclude Include="FatZombie.h" />
     <ClInclude Include="Front.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SlowZombie.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
