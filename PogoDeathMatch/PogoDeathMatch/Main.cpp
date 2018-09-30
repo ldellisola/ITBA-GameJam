@@ -38,8 +38,8 @@ int main(void) {
 	stage.loadSoundFactory(&soundF);
 
 	Menu mainMenu;
+	AllegroLayout gameOverLayout(DisplaySquare, DisplaySquare, "gameover.png", LayoutDrawMode::Slow);
 	window.insertLayout(mainMenu.getLayout());
-
 	AllegroEvent alEv(EventType::Empty, 0);
 
 	bool isFirstTime = true;
@@ -48,13 +48,22 @@ int main(void) {
 	gameState currentState = gameState::PAUSE;
 
 	menuMusic->play();
+
 	do {
+
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
 
 			alEv = eventHandler.ObtainEvent();
 			
 
+			if (currentState == gameState::GAME_OVER) {
+				if (alEv.getType() == EventType::KeyDown) {
+					currentState = gameState::PAUSE;
+					window.deleteLayout();
+					window.insertLayout(mainMenu.getLayout());
+				}
+			}
 
 			if (alEv.getType() == EventType::MouseDown) {
 				switch (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp())) {
@@ -96,20 +105,23 @@ int main(void) {
 			}
 			else if (alEv.getType() == EventType::DisplayClose)
 				leave = true;
-			window.update();
 		}
 
 		if (currentState == gameState::GAME_OVER) {
 			menuMusic->stop();
 
-			//Stage.gameOver();
+			stage.gameover();
 			currentState == gameState::PAUSE;
 			isFirstTime = true;
+			window.deleteLayout();
+			window.insertLayout(gameOverLayout);
 
 		}
 		else if (currentState == gameState::QUIT) {
 			leave = true;
 		}
+
+		window.update();
 
 	} while (!leave);
 	
