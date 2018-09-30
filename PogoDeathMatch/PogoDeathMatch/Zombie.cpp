@@ -1,11 +1,12 @@
 #include "Zombie.h"
 
 float variateAngle(float angle);
+#include "Front.h"
 
 #define Force (1)
 #define Mass (1)
 #define Speed (0.1)
-#define Radius (25)
+#define Radius (charSquare)
 #define Damp (1)
 #define SizeCoef (7)
 

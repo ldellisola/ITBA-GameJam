@@ -1,10 +1,11 @@
 #include "Player.h"
+#include "Front.h"
 #include <math.h>
 
 #define Force (1)
 #define Mass (1)
 #define Speed (20)
-#define Radius (25)
+#define Radius (charSquare)
 #define Damp (1)
 #define SizeCoef (7)
 

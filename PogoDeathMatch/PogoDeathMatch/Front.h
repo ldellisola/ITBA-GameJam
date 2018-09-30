@@ -8,11 +8,23 @@
 #include "Allegro/Allegro Wrapper/AllegroWindow.h"
 #include "Allegro/Allegro Wrapper/AllegroEvent.h"
 
+//#define AlanDisplay
+#define OtherDisplay
+
+#ifdef AlanDisplay
+#define DisplaySquare (650)
+#define charSquare (50)
+#endif
+#ifdef OtherDisplay
+#define DisplaySquare (1500)
+#define charSquare (300)
+#endif
+
 #define FONT1_SIZE 50
 #define FONT1_ID 1
 
-#define WIDTH 1300
-#define HEIGHT 600
+#define WIDTH DisplaySquare
+#define HEIGHT DisplaySquare
 #define BUTTON_SIZE_H 100
 #define BUTTON_SIZE_W 300
 #define BUTTON_POS_Y 500

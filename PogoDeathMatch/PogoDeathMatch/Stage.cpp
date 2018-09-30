@@ -18,7 +18,7 @@ Stage::~Stage()
 
 void Stage::draw()
 {
-	this->stageSprite->draw(0, 0);
+	this->stageSprite->draw(0+radius, 0+ radius);
 }
 
 void Stage::addPlayer(Player * player_)

@@ -8,25 +8,27 @@
 #include "Stage.h"
 
 
+
 int main(void) {
 
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
-	AllegroWindow window(1300, 600, allegro.getEventQueue(), "Albondicats");
+	AllegroWindow window(DisplaySquare, DisplaySquare, allegro.getEventQueue(), "Albondicats");
+	//AllegroWindow window(1300, 650, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();
 	window.setPosition(0, 0);
 	AllegroEventHandler eventHandler(allegro.getEventQueue());
 
 
-	AllegroSprite zombieSprite("zombieSprite.png");
-	AllegroSprite playerSprite("PlayerSprite.png");
-	AllegroSprite stageSprite("StageSprite.png",2000,2000);
+	AllegroSprite zombieSprite("zombieSprite.png", charSquare, charSquare);
+	AllegroSprite playerSprite("PlayerSprite.png", charSquare, charSquare);
+	AllegroSprite stageSprite("StageSprite.png", DisplaySquare, DisplaySquare);
 	window.setImageAsBackground();
 
 	AllegroSoundFactory soundF;
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
-	Stage stage(&stageSprite, 550, 1300 / 2.0, 600 / 2.0);
+	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
 	Player player(playerjump, nullptr, &playerSprite, 200, 200);
 	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
 
