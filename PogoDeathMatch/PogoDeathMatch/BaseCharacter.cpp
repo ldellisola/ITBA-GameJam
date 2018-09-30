@@ -69,10 +69,10 @@ bool BaseCharacter::hit(BaseCharacter * other)
 {
 
 	if (sqrtf(powf(other->x - this->x, 2) + powf(other->y - this->y, 2)) <= other->baseRadius + this->baseRadius) {
-		if ((sqrtf(powf(this->angle - other->angle, 2)) >= 0) && (sqrtf(powf(this->angle - other->angle, 2)) <= PI / 2.0)) {
-			other->forceAngle = this->angle;
+			other->angle = -((this->angle + other->angle)/2);
 			other->applyForce(this->force);
-		}
+			this->angle = ((this->angle + other->angle)/2);
+			this->applyForce(this->force);
 	}
 
 	return false;

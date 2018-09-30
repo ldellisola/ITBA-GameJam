@@ -12,8 +12,8 @@
 #define OtherDisplay
 
 #ifdef AlanDisplay
-#define DisplaySquare (650)
-#define charSquare (50)
+#define DisplaySquare (600)
+#define charSquare (20)
 #endif
 #ifdef OtherDisplay
 #define DisplaySquare (1500)
