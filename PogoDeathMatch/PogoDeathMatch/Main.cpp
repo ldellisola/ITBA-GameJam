@@ -50,8 +50,20 @@ int main(void) {
 
 
 			if (alEv.getType() == EventType::MouseDown) {
-				if (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp()) == EXIT)
-					leave = true;
+				switch (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp())) {
+				case EXIT: leave = true;
+					break;
+				case PLAY:
+					do {
+						eventHandler.getEvent();
+						if (eventHandler.isThereEvent()) {
+
+							leave = stage.run(eventHandler.ObtainEvent(), window);
+						}
+
+					} while (!leave);
+					break;
+				}
 			}
 			else if (alEv.getType() == EventType::DisplayClose)
 				leave = true;
@@ -73,15 +85,15 @@ int main(void) {
 	/*AllegroEvent alEv(EventType::Empty, 0);*/
 
 
-	leave = false;
-	do {
-		eventHandler.getEvent();
-		if (eventHandler.isThereEvent()) {
+	//leave = false;
+	//do {
+	//	eventHandler.getEvent();
+	//	if (eventHandler.isThereEvent()) {
 
-			leave = stage.run(eventHandler.ObtainEvent(), window);			
-		}
+	//		leave = stage.run(eventHandler.ObtainEvent(), window);			
+	//	}
 
-	} while (!leave);
+	//} while (!leave);
 
 
 
