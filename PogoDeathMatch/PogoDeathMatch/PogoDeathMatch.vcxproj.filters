@@ -223,6 +223,9 @@
     <Image Include="ZombieSprite2.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="gameover.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="UbuntuMono-R.ttf">

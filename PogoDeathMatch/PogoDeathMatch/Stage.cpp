@@ -212,3 +212,10 @@ void Stage::restart() {
 
 
 }
+
+void Stage::gameover() {
+
+	this->restart();
+
+
+}
