@@ -220,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="examplebutton1.png" />
+    <Image Include="gameover.png" />
     <Image Include="PlayerSprite.png" />
     <Image Include="PogoDeathmatch1.png" />
     <Image Include="StageSprite.png" />

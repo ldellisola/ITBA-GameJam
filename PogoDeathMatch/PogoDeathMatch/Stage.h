@@ -27,6 +27,7 @@ public:
 
 
 	gameState run(AllegroEvent ev, AllegroWindow& window);
+	void gameover();
 	void restart();
 
 	float getX() { return centerX; }
