@@ -109,7 +109,7 @@ gameState Stage::run(AllegroEvent ev, AllegroWindow& window)
 			this->randomlyGenerateZombies();
 		}
 
-		al_clear_to_color(al_color_name("hotpink"));
+		al_clear_to_color(al_color_name("lightblue"));
 		this->draw();
 		this->player->draw();
 		for (int i = 0; i < this->zombies.size(); i++)
@@ -200,19 +200,19 @@ void Stage::randomlyGenerateZombies()
 
 
 		if (prob < 1 && zombiesSpawned > 40) {
-			this->zombies.push_back(new BossZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->bossZombieSprite, pos[2 * index], pos[2 * index + 1], 200));
+			this->zombies.push_back(new BossZombie(nullptr, nullptr, this->bossZombieSprite, pos[2 * index], pos[2 * index + 1], 200));
 			++zombiesSpawned;
 		}
 		else if (prob < 5 && zombiesSpawned>30) {
-			this->zombies.push_back(new FatZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fatZombieSprite, pos[2 * index], pos[2 * index + 1], 150));
+			this->zombies.push_back(new FatZombie(nullptr, nullptr, this->fatZombieSprite, pos[2 * index], pos[2 * index + 1], 150));
 			++zombiesSpawned;
 		}
 		else if (prob < 10 && zombiesSpawned>10) {
-			this->zombies.push_back(new FastZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->fastZombieSprite, pos[2 * index], pos[2 * index + 1], 50));
+			this->zombies.push_back(new FastZombie(nullptr, nullptr, this->fastZombieSprite, pos[2 * index], pos[2 * index + 1], 50));
 			++zombiesSpawned;
 		}
 		else {
-			this->zombies.push_back(new SlowZombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->slowZombieSprite, pos[2 * index], pos[2 * index + 1], 75));
+			this->zombies.push_back(new SlowZombie(nullptr, nullptr, this->slowZombieSprite, pos[2 * index], pos[2 * index + 1], 75));
 			++zombiesSpawned;
 		}
 	}

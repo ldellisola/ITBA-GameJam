@@ -7,7 +7,7 @@
 #define Mass (10)
 #define Radius (charSquare)
 #define Damp (1)
-#define SizeCoef (15)
+#define SizeCoef (20)
 
 
 Player::Player(AllegroSound * jump, AllegroSound * death, AllegroSprite * sprite, float x, float y)
