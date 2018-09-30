@@ -19,7 +19,7 @@ int main(void) {
 	AllegroEventHandler eventHandler(allegro.getEventQueue());
 
 
-	AllegroSprite zombieSprite("zombieSprite.png", charSquare, charSquare);
+	//AllegroSprite zombieSprite("zombieSprite.png", charSquare, charSquare);
 	AllegroSprite playerSprite("PlayerSprite.png", charSquare, charSquare);
 	AllegroSprite stageSprite("StageSprite.png", DisplaySquare, DisplaySquare);
 	window.setImageAsBackground();
@@ -36,7 +36,7 @@ int main(void) {
 
 	stage.addPlayer(&player);
 	stage.loadSoundFactory(&soundF);
-	stage.loadZombieSprite(&zombieSprite);
+	//stage.loadZombieSprite(&zombieSprite);
 
 	Menu mainMenu;
 	window.insertLayout(mainMenu.getLayout());
