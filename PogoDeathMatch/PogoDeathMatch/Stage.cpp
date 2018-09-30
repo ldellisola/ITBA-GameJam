@@ -9,11 +9,19 @@ Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, u
 	this->radius = radius_;
 	this->centerX = centerX_;
 	this->centerY = centerY_;
+	this->bossZombieSprite = new AllegroSprite("BossS");
+	this->fastZombieSprite = new AllegroSprite("");
+	this->fatZombieSprite = new AllegroSprite("");
+	this->slowZombieSprite = new AllegroSprite("");
 }
 
 
 Stage::~Stage()
 {
+	delete bossZombieSprite;
+	delete fastZombieSprite;
+	delete fatZombieSprite;
+	delete slowZombieSprite;
 }
 
 
