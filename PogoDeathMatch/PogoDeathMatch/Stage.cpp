@@ -118,17 +118,17 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 void Stage::update() {
 
 
-	float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
+	//float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
 
-	if (playerNormal > (DisplaySquare / 2)) {
+	//if (playerNormal > (DisplaySquare / 2)) {
 
-		for (Zombie *) in (this->zombies)
+	//	for (Zombie *) in (this->zombies)
 
-		return GAME_OVER;
-		}
+	//	return GAME_OVER;
+	//	}
 
 
-	}
+	//}
 }
 
 void Stage::randomlyGenerateZombies()

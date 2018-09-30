@@ -64,7 +64,7 @@ int main(void) {
 
 				case PLAY:
 
-					Stage.restart();
+//					Stage.restart();
 
 				isFirstTime = false;
 				isPlaying = true;
