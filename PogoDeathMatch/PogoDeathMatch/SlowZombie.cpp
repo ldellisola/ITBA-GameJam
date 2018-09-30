@@ -2,12 +2,12 @@
 
 
 
-#define SlowForce (1)
-#define SlowMass (1)
+#define SlowForce (2)
+#define SlowMass (2)
 #define SlowSpeed (1)
 #define SlowDamp (1)
 #define SlowSizeCoef (1)
-#define SlowPoints (1)
+#define SlowPoints (10)
 
 
 SlowZombie::SlowZombie(AllegroSound * jump, AllegroSound * death, AllegroSprite * sprite, float x, float y, float radius)

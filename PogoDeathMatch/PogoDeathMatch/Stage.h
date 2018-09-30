@@ -24,8 +24,7 @@ public:
 	void draw();
 	void addPlayer(Player* player_);
 	void loadSoundFactory(AllegroSoundFactory * sound);
-	void loadZombieSprite(AllegroSprite * sprite);
-	//void addZombie(Zombie* zombie_);
+
 
 	gameState run(AllegroEvent ev, AllegroWindow& window);
 	void restart();
@@ -47,6 +46,9 @@ private:
 	unsigned int maxZombies = 5;
 	
 	AllegroSoundFactory * soundFactory = nullptr;
-	AllegroSprite * zombieSprite = nullptr;
+	AllegroSprite * slowZombieSprite = nullptr;
+	AllegroSprite * fastZombieSprite = nullptr;
+	AllegroSprite * fatZombieSprite = nullptr;
+	AllegroSprite * bossZombieSprite = nullptr;
 };
 
