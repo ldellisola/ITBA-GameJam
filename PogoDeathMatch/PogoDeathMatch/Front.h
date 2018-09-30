@@ -28,8 +28,8 @@
 #define HEIGHT DisplaySquare
 #define BUTTON_SIZE_H 100
 #define BUTTON_SIZE_W 300
-#define BUTTON_POS_Y 500
-#define BUTTON2_POS_Y 800
+#define BUTTON_POS_Y 1200
+#define BUTTON2_POS_Y 1350
 #define BUTTON_POS_X 100
 #define BUTTON_TAB 400
 
@@ -37,7 +37,7 @@
 #define CONTINUE_TEXT "CONT"
 #define EXIT_TEXT "EXIT"
 #define INSTRUCTIONS_TEXT "INSTRUCTIONS"
-#define CREDITS_TEXT "Creditos"
+#define CREDITS_TEXT "CREDITOS"
 
 #define PLAY_ID 0
 #define CONT_ID 1

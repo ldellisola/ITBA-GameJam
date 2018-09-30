@@ -26,6 +26,8 @@ int main(void) {
 
 	AllegroSoundFactory soundF;
 	AllegroSound * menuMusic = soundF.create("Menu.ogg", PlayMode::Loop, 0);
+	AllegroSound * gameOverMusic = soundF.create("Game Over.ogg", PlayMode::Loop, 0);
+	AllegroSound * gameMusic = soundF.create("GameMusic.mp3", PlayMode::Loop, 0);
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
 
@@ -58,8 +60,10 @@ int main(void) {
 			
 
 			if (currentState == gameState::GAME_OVER) {
+				gameOverMusic->stop();
 				if (alEv.getType() == EventType::KeyDown) {
 					currentState = gameState::PAUSE;
+					menuMusic->play();
 					window.deleteLayout();
 					window.insertLayout(mainMenu.getLayout());
 				}
@@ -82,6 +86,7 @@ int main(void) {
 
 				case PLAY:
 					menuMusic->stop();
+					gameMusic->play();
 					stage.restart();
 
 
@@ -98,6 +103,7 @@ int main(void) {
 							}
 
 						} while (currentState == gameState::PLAYING);
+						gameMusic->stop();
 						menuMusic->play();
 						break;
 					}
@@ -109,6 +115,7 @@ int main(void) {
 
 		if (currentState == gameState::GAME_OVER) {
 			menuMusic->stop();
+			gameOverMusic->play();
 
 			stage.gameover();
 			currentState == gameState::PAUSE;
