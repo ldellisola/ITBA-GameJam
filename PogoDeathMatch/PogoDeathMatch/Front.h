@@ -28,16 +28,19 @@
 #define BUTTON_SIZE_H 100
 #define BUTTON_SIZE_W 300
 #define BUTTON_POS_Y 500
+#define BUTTON2_POS_Y 800
 #define BUTTON_POS_X 100
 #define BUTTON_TAB 400
 
 #define PLAY_TEXT "PLAY"
 #define CONTINUE_TEXT "CONT"
 #define EXIT_TEXT "EXIT"
+#define INSTRUCTIONS_TEXT "INSTRUCTIONS"
 
 #define PLAY_ID 0
 #define CONT_ID 1
 #define EXIT_ID 2
+#define INSTRUCTIONS_ID 3
 
 enum buttonVal
 {
@@ -72,10 +75,14 @@ public:
 		boxes.addBox(new AllegroButton(BUTTON_POS_X + BUTTON_TAB * 2, BUTTON_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, EXIT_TEXT, &this->font, colorF.create("black"), EXIT_ID));
 		boxes[EXIT_ID]->loadImageBackground("examplebutton1.png");
 		boxes[EXIT_ID]->setImageAsBackground();
+		boxes.addBox(new AllegroButton(BUTTON_POS_X + BUTTON_TAB, BUTTON2_POS_Y, BUTTON_SIZE_W, BUTTON_SIZE_H, INSTRUCTIONS_TEXT, &this->font, colorF.create("black"), INSTRUCTIONS_ID));
+		boxes[INSTRUCTIONS_ID]->loadImageBackground("examplebutton1.png");
+		boxes[INSTRUCTIONS_ID]->setImageAsBackground();
 
 		layout.addBox(boxes[PLAY_ID]);
 		layout.addBox(boxes[CONT_ID]);
 		layout.addBox(boxes[EXIT_ID]);
+		layout.addBox(boxes[INSTRUCTIONS_ID]);
 
 	};
 
