@@ -178,6 +178,9 @@
     <Image Include="PogoDeathmatch1.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="examplebutton1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="UbuntuMono-R.ttf">
