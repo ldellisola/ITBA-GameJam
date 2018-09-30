@@ -77,10 +77,10 @@ int main(void) {
 
 
 					isFirstTime = false;
-					currentState = gameState::PLAYING;
 
 				case CONTINUE:
 
+					currentState = gameState::PLAYING;
 					if (!isFirstTime) {
 						do {
 							eventHandler.getEvent();
