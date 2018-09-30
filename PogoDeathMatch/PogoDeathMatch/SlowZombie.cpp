@@ -2,11 +2,11 @@
 
 
 
-#define SlowForce (7)
-#define SlowMass (10)
-#define SlowSpeed (2)
+#define SlowForce (12)
+#define SlowMass (15)
+#define SlowSpeed (4)
 #define SlowDamp (1)
-#define SlowSizeCoef (1)
+#define SlowSizeCoef (10)
 #define SlowPoints (10)
 
 
