@@ -17,7 +17,7 @@
 #endif
 #ifdef OtherDisplay
 #define DisplaySquare (1500)
-#define charSquare (300)
+#define charSquare (100)
 #endif
 
 #define FONT1_SIZE 50
