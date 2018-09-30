@@ -13,7 +13,6 @@ int main(void) {
 
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
 	AllegroWindow window(DisplaySquare, DisplaySquare, allegro.getEventQueue(), "Albondicats");
-	//AllegroWindow window(1300, 650, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();
 	window.setPosition(0, 0);
@@ -28,12 +27,18 @@ int main(void) {
 	AllegroSoundFactory soundF;
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
+<<<<<<< HEAD
 	Stage stage(&stageSprite, DisplaySquare/2.0, DisplaySquare/2.0, 600/2.0);
 	Player player(playerjump, nullptr, &playerSprite, DisplaySquare/2, DisplaySquare/2);
 	Zombie zombie(nullptr, nullptr, &zombieSprite, DisplaySquare/5, DisplaySquare/5);
+=======
+	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
+	Player player(playerjump, nullptr, &playerSprite, DisplaySquare / 2.0, DisplaySquare / 2.0);
+>>>>>>> 9c0f6d0460372e76a03753b4c8604634b2ecca41
 
-	stage.addZombie(&zombie);
 	stage.addPlayer(&player);
+	stage.loadSoundFactory(&soundF);
+	stage.loadZombieSprite(&zombieSprite);
 
 	// UI
 
@@ -93,22 +98,15 @@ int main(void) {
 	//
 	allegro.uninstallMouseAddon();
 
+	leave = false;
+	do {
+		eventHandler.getEvent();
+		if (eventHandler.isThereEvent()) {
 
-	//Menu mainMenu;
-	//window.insertLayout(mainMenu.getLayout());
+			leave = stage.run(eventHandler.ObtainEvent(), window);			
+		}
 
-	/*AllegroEvent alEv(EventType::Empty, 0);*/
-
-
-	//leave = false;
-	//do {
-	//	eventHandler.getEvent();
-	//	if (eventHandler.isThereEvent()) {
-
-	//		leave = stage.run(eventHandler.ObtainEvent(), window);			
-	//	}
-
-	//} while (!leave);
+	} while (!leave);
 
 
 

@@ -1,5 +1,5 @@
 #include "BaseCharacter.h"
-
+#include <iostream>
 #include <math.h>
 
 
@@ -28,9 +28,6 @@ void BaseCharacter::draw()
 
 	int tt = (this->maxTick / 2)- this->tick;
 	this->radius = this->baseRadius + this->sizeCoef * (tt / (this->maxTick / 2.0));
-
-	//this->width = this->BaseWidth + this->sizeCoef * (tt / (this->maxTick / 2.0));
-	//this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
 	this->sprite->setDimensions(2*this->radius, 2*this->radius);
 	this->sprite->setAngle(90 + this->angle * 180.0/PI );
@@ -68,10 +65,12 @@ bool BaseCharacter::hit(BaseCharacter * other)
 {
 
 	if (sqrtf(powf(other->x - this->x, 2) + powf(other->y - this->y, 2)) <= other->baseRadius + this->baseRadius) {
-			other->angle = -((this->angle + other->angle)/2);
+		std::cout << "Bot angle:" << other->angle << " -- Me angle " << this->angle << std::endl;
+			other->forceAngle = -((this->angle - other->angle)/2.0 - PI/2.0);
 			other->applyForce(this->force);
-			this->angle = ((this->angle + other->angle)/2);
-			this->applyForce(this->force);
+			this->forceAngle = ((this->angle - other->angle)/2.0 + PI / 2.0);
+			this->applyForce(other->force);
+		std::cout << "Bot forceAangle:" << other->forceAngle << " -- Me forceAangle " << this->forceAngle << std::endl;
 	}
 
 	return false;
@@ -103,5 +102,3 @@ void BaseCharacter::updateTick()
 		this->playJumpSound();
 	this->tick = (++tick) % maxTick;
 }
-
-

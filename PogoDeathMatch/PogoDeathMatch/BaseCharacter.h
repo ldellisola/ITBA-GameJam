@@ -20,6 +20,7 @@ public:
 
 	float getX() { return x; }
 	float getY() { return y; }
+	float getR() { return radius; }
 
 protected:
 	bool moving;
