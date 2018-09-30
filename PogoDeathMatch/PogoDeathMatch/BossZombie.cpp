@@ -3,7 +3,7 @@
 
 
 #define BossForce (20)
-#define BossMass (50)
+#define BossMass (60)
 #define BossSpeed (4)
 #define BossDamp (2)
 #define BossSizeCoef (15)

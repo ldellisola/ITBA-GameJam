@@ -28,12 +28,13 @@ protected:
 	float angle,speed, forceAngle;
 	const float force, mass, baseSpeed, baseRadius, dampCoef, sizeCoef;
 	void updateTick();
+	float appliedForce = 0;
 private:
 
 	void DamperForce();
 	
 	const unsigned int maxTick = 20;
-	float appliedForce = 0;
+
 
 	unsigned int tick =0;
 

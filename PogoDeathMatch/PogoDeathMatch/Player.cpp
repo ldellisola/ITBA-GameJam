@@ -30,7 +30,7 @@ void Player::update()
 	if (right)
 		this->rotateRight();
 
-	if (moving)
+	if (moving || this->appliedForce > 0)
 		BaseCharacter::update();
 
 
