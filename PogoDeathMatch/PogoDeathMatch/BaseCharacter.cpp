@@ -3,14 +3,18 @@
 #include <math.h>
 
 
-
+#define STARTANGLEDEG 90
+#define ANGLEVARDEG (180.0/PI)
 
 BaseCharacter::BaseCharacter(AllegroSound * jump, AllegroSound * hit, AllegroSprite * sprite, float x, float y, float force, float mass, float speed, float radius, float damp, float sizeCoef)
 	: baseSpeed(speed), baseRadius(radius), dampCoef(damp), force(force), mass(mass), sizeCoef(sizeCoef)
 {
+
+	this->angle = 0;
 	this->jumpSound = jump;
 	this->hitSound = hit;
 	this->sprite = sprite;
+
 
 	this->x = x;
 	this->y = y;
@@ -30,7 +34,7 @@ void BaseCharacter::draw()
 	//this->height = this->baseHeight + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
 	this->sprite->setDimensions(2*this->radius, 2*this->radius);
-	this->sprite->setAngle(this->angle *180/PI);
+	this->sprite->setAngle(STARTANGLEDEG + this->angle * 180.0/PI );
 
 	this->sprite->draw(this->x, this->y);
 }
@@ -63,13 +67,17 @@ void BaseCharacter::update()
 
 bool BaseCharacter::hit(BaseCharacter * other)
 {
-	/*if (this->x <= (other->x + other->BaseWidth) && (this->x + this->width) >= other->x)
-		if ((this->y + this->height >= other->y) && (this->y) <= (other->y + other->baseHeight))
-			if ( (sqrtf(powf(this->angle - other->angle, 2)) >=0)  &&  (sqrtf(powf(this->angle - other->angle, 2))<=PI/2.0)) {
+
+	if (other->x - this->x <= other->radius + this->radius) {
+		if (other->y - this-> y <= other->radius + this->radius) {
+			if ((sqrtf(powf(this->angle - other->angle, 2)) >= 0) && (sqrtf(powf(this->angle - other->angle, 2)) <= PI / 2.0)) {
+				other->angle = this->angle;
 				other->applyForce(this->force);
 				return true;
 			}
-	return false;*/
+		}
+	}
+
 	return false;
 }
 
