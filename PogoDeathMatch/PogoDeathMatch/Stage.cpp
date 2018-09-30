@@ -14,6 +14,8 @@ Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, u
 	this->fastZombieSprite = new AllegroSprite("zombie_flash.png");
 	this->fatZombieSprite = new AllegroSprite("zombie_fat.png");
 	this->slowZombieSprite = new AllegroSprite("zombieSprite.png");
+	this->font = new AllegroFont("UbuntuMono-R.ttf", 60, 0);
+	this->scoreBox = new AllegroWrittenBox(0, 0, 200, 100, "0", font, al_color_name("black"));
 }
 
 
@@ -23,12 +25,15 @@ Stage::~Stage()
 	delete fastZombieSprite;
 	delete fatZombieSprite;
 	delete slowZombieSprite;
+	delete font;
+	delete scoreBox;
 }
 
 
 void Stage::draw()
 {
 	this->stageSprite->draw(0 + radius, 0 + radius);
+	this->scoreBox->draw();
 }
 
 void Stage::addPlayer(Player * player_)
@@ -150,6 +155,7 @@ gameState Stage::update() {
 
 			if (zombieNormal > (DisplaySquare / 2)) {
 				this->score += zombies[i]->givePoints();
+				this->scoreBox->setText(std::to_string(this->score-1));
 				delete this->zombies[i];
 				zombiesToKill.push_back(i);
 			}

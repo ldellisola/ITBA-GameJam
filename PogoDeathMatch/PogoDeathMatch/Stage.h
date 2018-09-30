@@ -10,6 +10,7 @@
 #include "Allegro\Allegro Wrapper\AllegroSprite.h"
 #include "Allegro/Allegro Wrapper/AllegroSound.h"
 #include "Allegro/Allegro Wrapper/AllegroEvent.h"
+#include "Allegro/Allegro Wrapper/WrittenBox.h"
 #include "Allegro/Allegro Wrapper/AllegroWindow.h"
 #include <vector>
 
@@ -39,6 +40,8 @@ public:
 	unsigned score = 1;
 
 private:
+	AllegroWrittenBox *scoreBox;
+	AllegroFont * font;
 	gameState update();
 	AllegroSprite* stageSprite;
 	unsigned radius;
