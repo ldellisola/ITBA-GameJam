@@ -122,9 +122,10 @@ void Stage::update() {
 
 	if (playerNormal > (DisplaySquare / 2)) {
 
-		//	for enemy  this->
-		//	return GAME_OVER;
-		//}
+		for (Zombie *) in (this->zombies)
+
+		return GAME_OVER;
+		}
 
 
 	}
@@ -132,7 +133,7 @@ void Stage::update() {
 
 void Stage::randomlyGenerateZombies()
 {
-	int prob = rand() % 100;
+	int prob = rand() % 500;
 	int x, y;
 
 

@@ -64,7 +64,7 @@ int main(void) {
 
 				case PLAY:
 
-					//Stage.restart();
+					Stage.restart();
 
 				isFirstTime = false;
 				isPlaying = true;
@@ -93,7 +93,6 @@ int main(void) {
 	} while (!leave);
 	
 
-	//
 	allegro.uninstallMouseAddon();
 
 	leave = false;
