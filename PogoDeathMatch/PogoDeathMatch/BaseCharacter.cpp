@@ -30,7 +30,7 @@ void BaseCharacter::draw()
 	this->radius = this->baseRadius + this->sizeCoef * (tt / (this->maxTick / 2.0));
 
 	this->sprite->setDimensions(2*this->radius, 2*this->radius);
-	this->sprite->setAngle(this->angle * 180.0/PI + 90 );
+	this->sprite->setAngle(90 + this->angle * 180.0/PI );
 
 	this->sprite->draw(this->x, this->y);
 }
@@ -102,5 +102,3 @@ void BaseCharacter::updateTick()
 		this->playJumpSound();
 	this->tick = (++tick) % maxTick;
 }
-
-
