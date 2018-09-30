@@ -35,7 +35,7 @@ public:
 
 	void randomlyGenerateZombies();
 
-	unsigned score;
+	unsigned score = 1;
 
 private:
 	gameState update();
@@ -45,7 +45,7 @@ private:
 	unsigned centerY;
 	Player* player;
 	std::vector<Zombie*> zombies;
-	unsigned int maxZombies = 5;
+	unsigned int maxZombies = 1;
 
 	unsigned int zombiesSpawned = 0;
 	
