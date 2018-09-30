@@ -16,17 +16,25 @@ public:
 	~Stage();
 	void draw();
 	void addPlayer(Player* player_);
-	void addZombie(Zombie* zombie_);
+	void loadSoundFactory(AllegroSoundFactory * sound);
+	void loadZombieSprite(AllegroSprite * sprite);
+	//void addZombie(Zombie* zombie_);
 
 	bool run(AllegroEvent ev, AllegroWindow& window);
 
+	void randomlyGenerateZombies();
+
 private:
+	void update();
 	AllegroSprite* stageSprite;
 	unsigned radius;
 	unsigned centerX;
 	unsigned centerY;
 	Player* player;
 	std::vector<Zombie*> zombies;
-
+	unsigned int maxZombies = 5;
+	
+	AllegroSoundFactory * soundFactory = nullptr;
+	AllegroSprite * zombieSprite = nullptr;
 };
 

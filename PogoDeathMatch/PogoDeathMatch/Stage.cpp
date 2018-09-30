@@ -1,5 +1,7 @@
 #include "Stage.h"
+#include "Front.h"
 
+bool intersects(Player * player, int x, int y);
 
 
 Stage::Stage(AllegroSprite* stageSprite_, unsigned radius_, unsigned centerX_, unsigned centerY_)
@@ -26,13 +28,22 @@ void Stage::addPlayer(Player * player_)
 	this->player = player_;
 }
 
-void Stage::addZombie(Zombie * zombie_)
+void Stage::loadSoundFactory(AllegroSoundFactory * soundFactory)
 {
-	this->zombies.push_back(zombie_);
+	this->soundFactory = soundFactory;
 }
+
+void Stage::loadZombieSprite(AllegroSprite * sprite)
+{
+	this->zombieSprite = sprite;
+}
+
+
 
 bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 {
+
+	bool isPlaying = true;
 	switch (ev.getType())
 	{
 	case EventType::DisplayClose:
@@ -49,8 +60,12 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		case ALLEGRO_KEY_D:
 			this->player->setRotation(Rotation::Right,true);
 			break;
-		}
-		break;
+			break;
+		case ALLEGRO_KEY_Q:
+			isPlaying = false;
+			break;
+	}
+	break;
 	case EventType::KeyUp:
 
 		switch (ev.getValue())
@@ -77,11 +92,16 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 
 		for (int i = 0; i < this->zombies.size(); i++) {
 
-		//	this->zombies[i]->hit(player);
 			this->zombies[i]->calculateMovement(this->player);
 			this->zombies[i]->update();
 		}
+		this->update();
 
+		if (this->zombies.size() < this->maxZombies) {
+			this->randomlyGenerateZombies();
+		}
+
+		al_clear_to_color(al_color_name("hotpink"));
 		this->draw();
 		this->player->draw();
 		for (int i = 0; i < this->zombies.size(); i++)
@@ -93,5 +113,42 @@ bool Stage::run(AllegroEvent ev, AllegroWindow& window)
 		break;
 	}
 
-	return false;
+	return isPlaying;
+}
+void Stage::update() {
+
+
+	float playerNormal = sqrt(pow(this->player->getX() - (DisplaySquare / 2), 2.0) + pow(this->player->getY() - (DisplaySquare / 2), 2.0));
+
+	if (playerNormal > (DisplaySquare / 2)) {
+
+		//	for enemy  this->
+		//	return GAME_OVER;
+		//}
+
+
+	}
+}
+
+void Stage::randomlyGenerateZombies()
+{
+	int prob = rand() % 100;
+	int x, y;
+
+
+	if (prob == 0) {
+		do {
+			x = this->centerX + (rand() % (this->radius)) - this->radius / 2.0;
+			y = this->centerY + (rand() % (this->radius)) - this->radius / 2.0;
+		} while (!intersects(player, x, y));
+		this->zombies.push_back(new Zombie(soundFactory->create("bounce.ogg", PlayMode::Once, 0), nullptr, this->zombieSprite, x, y));
+	}
+}
+
+
+bool intersects(Player * player, int x, int y) {
+	if (player->getX() - player->getR() / 2.0 <= x && x <= player->getX() + 2 * player->getR())
+		if (player->getY() - player->getR() / 2.0 <= y && y <= player->getY() + 2 * player->getR())
+			return false;
+	return true;
 }

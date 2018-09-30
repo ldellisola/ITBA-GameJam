@@ -2,7 +2,9 @@
 #include "Front.h"
 #include <math.h>
 
+
 #define Force (40)
+
 #define Mass (10)
 #define Speed (5)
 #define Radius (charSquare)

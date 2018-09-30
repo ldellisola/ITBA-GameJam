@@ -13,7 +13,6 @@ int main(void) {
 
 	AllegroClass allegro(Allegro::InitMode::Full, Allegro::NoValue, Allegro::NoValue, 30);
 	AllegroWindow window(DisplaySquare, DisplaySquare, allegro.getEventQueue(), "Albondicats");
-	//AllegroWindow window(1300, 650, allegro.getEventQueue(), "Albondicats");
 	window.open();
 	window.setAsMain();
 	window.setPosition(0, 0);
@@ -28,14 +27,15 @@ int main(void) {
 	AllegroSoundFactory soundF;
 	AllegroSound * playerjump = soundF.create("bounce.ogg", PlayMode::Once, 0);
 
-	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
-	Player player(playerjump, nullptr, &playerSprite, 200, 200);
-	Zombie zombie(nullptr, nullptr, &zombieSprite, 500, 500);
-	Zombie zombie1(nullptr, nullptr, &zombieSprite, 100, 100);
 
-	stage.addZombie(&zombie);
-	stage.addZombie(&zombie1);
+	Stage stage(&stageSprite, DisplaySquare /2.0, DisplaySquare / 2.0, 600 / 2.0);
+
+	Player player(playerjump, nullptr, &playerSprite, DisplaySquare / 2.0, DisplaySquare / 2.0);
+
+
 	stage.addPlayer(&player);
+	stage.loadSoundFactory(&soundF);
+	stage.loadZombieSprite(&zombieSprite);
 
 	// UI
 
@@ -44,7 +44,10 @@ int main(void) {
 
 	AllegroEvent alEv(EventType::Empty, 0);
 
+	bool isFirstTime = true;
 	bool leave = false;
+	bool isPlaying = true;
+
 	do {
 		eventHandler.getEvent();
 		if (eventHandler.isThereEvent()) {
@@ -55,18 +58,29 @@ int main(void) {
 
 			if (alEv.getType() == EventType::MouseDown) {
 				switch (mainMenu.checkForPress(alEv.getX(), alEv.getY(), alEv.getTimestamp())) {
+
 				case EXIT: leave = true;
 					break;
+
 				case PLAY:
-					do {
-						eventHandler.getEvent();
-						if (eventHandler.isThereEvent()) {
 
-							leave = stage.run(eventHandler.ObtainEvent(), window);
-						}
+					//Stage.restart();
 
-					} while (!leave);
-					break;
+				isFirstTime = false;
+				isPlaying = true;
+
+				case CONTINUE:
+
+					if (!isFirstTime) {
+						do {
+							eventHandler.getEvent();
+							if (eventHandler.isThereEvent()) {
+								isPlaying = stage.run(eventHandler.ObtainEvent(), window);
+							}
+
+						} while (isPlaying);
+						break;
+					}
 				}
 			}
 			else if (alEv.getType() == EventType::DisplayClose)
@@ -82,22 +96,15 @@ int main(void) {
 	//
 	allegro.uninstallMouseAddon();
 
+	leave = false;
+	do {
+		eventHandler.getEvent();
+		if (eventHandler.isThereEvent()) {
 
-	//Menu mainMenu;
-	//window.insertLayout(mainMenu.getLayout());
+			leave = stage.run(eventHandler.ObtainEvent(), window);			
+		}
 
-	/*AllegroEvent alEv(EventType::Empty, 0);*/
-
-
-	//leave = false;
-	//do {
-	//	eventHandler.getEvent();
-	//	if (eventHandler.isThereEvent()) {
-
-	//		leave = stage.run(eventHandler.ObtainEvent(), window);			
-	//	}
-
-	//} while (!leave);
+	} while (!leave);
 
 
 
